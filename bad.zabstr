@@ -1,0 +1,984 @@
+
+<GLOBAL CLOCK-TBL-3 <TABLE I-TOWER 32767 I-FUSE 32767 I-ASSASSINATION 1080
+I-FESTIVITIES 60 I-TOPAZ 32767 I-ELEVATOR-ARRIVES 32767>> 
+<CONSTANT CLOCK-INTS-3 6> 
+<CONSTANT I-ASSASSINATION-OFF 5> 
+<CONSTANT I-TOPAZ-OFF 9> 
+<CONSTANT I-ELEVATOR-OFF 11> 
+<DEFINE-ROUTINE TOPAZ-THOUGHT> 
+<GLOBAL TOPAZ-THOUGHT-STR
+"You consider telling Topaz who and what you are, but it is too
+dangerous; your own men are probably swarming the area, and any
+contact with Topaz would blow your cover wide open."> 
+<OBJECT BAD-GUN (DESC "Gurthark Mark VI revolver") (SYNONYM PISTOL GUN REVOLVER
+GURTHARK) (ADJECTIVE GURTHARK AUTOMATIC MARK VI) (FLAGS TAKEBIT) (ACTION
+BAD-GUN-F)> 
+<DEFINE-ROUTINE BAD-GUN-F> 
+<OBJECT BAD-WATCH (DESC "wristwatch") (SYNONYM CLOCK WATCH WRISTWATCH) (
+ADJECTIVE WRIST) (FLAGS WEARBIT WORNBIT READBIT) (ACTION BAD-WATCH-F)> 
+<DEFINE-ROUTINE BAD-WATCH-F> 
+<DEFINE-ROUTINE I-ASSASSINATION> 
+<DEFINE-ROUTINE I-FESTIVITIES> 
+<GLOBAL FESTIVITIES-SQ <PLTABLE <> <> <> <> <> <> <> <> <> <> <> <>
+"The town's fifteenth century clock strikes the hour, indicating that the
+ceremonies are shortly to commence."
+"You watch as the mayor of Ostnitz comes to the podium at the front of the
+dais. He motions for the crowd to be silent for the playing of the national
+anthem." "The anthem finished, the mayor calls upon the head of the church of
+Litzenburg to give a benediction."
+"The priest departs, and the mayor announces the \"kickoff\" speaker,
+William Henry Huttinger, the American ambassador. Amidst
+the roaring approval of the crowd, Huttinger approaches the rostrum.|
+|
+It may seem strange for an unaligned country to show such feeling for a
+former member of the American military, but it was Huttinger
+who led the Allied forces during the liberation of Litzenburg in 1945,
+and the people have not forgotten.|
+|
+How ironic that the Kremlin chose this time, this place for the death
+of one of Litzenburg's only heroes. Even more ironic is that the irony is
+almost certainly lost on them."
+"Having calmed down the crowd, Huttinger begins to speak. The words seem
+to careen through your head but make little impact - there are only
+moments now in which to act." "">> 
+<GLOBAL FESTIVITIES-F <PLTABLE <> <> <> <> <> <> <> <> <> <> <> <>
+"The town's fifteenth century clock strikes the hour."
+"You notice that the crowd has become quiet. After a moment, the national
+anthem begins to play."
+"The anthem is now finished, and after a few moments, a benediction is
+read." "The mayor announces the \"kickoff\" speaker, William Henry Huttinger, the
+American ambassador. The crowd roars its approval; you've got only moments
+before it will be too late to save him!"
+"Huttinger begins to speak. The words seem to careen through your head but
+make little impact - you have only moments in which to act."
+"Huttinger continues to speak, and the crowd responds with enthusiasm,
+interrupting him frequently.">> 
+<GLOBAL FESTIVITIES <PLTABLE <> <> <> <> <> <> <> <> <> <> <> <> -1
+"The crowd noise subsides and the national anthem is begun." -1 -1 -1 -1>> 
+<DEFINE-ROUTINE SQUARE-VIEW?> 
+<GLOBAL SQUARE-VIEWS <PLTABLE BLDG-6 BLDG-5 SQUARE-NW BLDG-1 ALLEY-1 BLDG-2
+SQUARE-SW BLDG-3 BLDG-4 TOWN-SQUARE>> 
+<OBJECT MATCHES (DESC "matchbook") (SYNONYM MATCH MATCHES MATCHBOOK BOOK) (
+FLAGS TAKEBIT) (SIZE 2) (ACTION MATCHES-F)> 
+<DEFINE-ROUTINE MATCHES-F> 
+<OBJECT CIGARETTE (DESC "cigarette") (SYNONYM CIGARETTE) (FLAGS TAKEBIT) (SIZE
+2) (ACTION CIGARETTE-F)> 
+<DEFINE-ROUTINE CIGARETTE-F> 
+<ROOM EDGE-NW (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Street Corner") (FDESC
+"the corner or Brzni and Fremzi") (LDESC
+"You are at the corner of Brzni, running east-west, and Besnap, running
+north and south. The town square can be reached east along Brzni.") (NORTH
+SORRY "You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (WEST SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (SOUTH PER BB1-MOVE) (EAST TO BLDG-7 IF FALSE-FLAG
+ELSE "You continue along Brzni Street, arriving in front of a closed hardware
+store. The street continues east.")> 
+<ROOM BEHIND-BLDG-1 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC
+"Behind Apartments") (FDESC "back side of the apartment building") (LDESC
+"You are behind the apartment building; there is no access to the inside from
+this street. Fremzi continues north and south here; a vacant lot lies to the
+west.") (NORTH TO EDGE-NW IF FALSE-FLAG ELSE
+"You continue down Fremzi Street, coming to the intersection with Brzni
+Street, which runs east toward the square.") (SOUTH TO EDGE-W IF FALSE-FLAG
+ELSE "You are now moving down Fremzi Street, just between Brzni Street to the
+north and Besnap Street to the south. The apartment building and office
+building lie to your northeast and southeast respectively, but there is
+no access here to either. A vacant lot lies to the west.") (WEST SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (EAST SORRY
+"There's no way into the apartment building from here.")> 
+<DEFINE-ROUTINE BB2-MOVE> 
+<DEFINE-ROUTINE BB1-MOVE> 
+<ROOM EDGE-W (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Near Empty Lot") (FDESC
+"spot directly across from the vacant lot") (LDESC
+"You are on Fremzi Stret, halfway between Brzni to the north and Besnap
+to the south. A vacant lot sits to the west; two buildings rise to the
+northeast and southeast, but access to the inside is on Ostnitz Street.") (
+NORTH PER BB1-MOVE) (SOUTH PER BB2-MOVE) (WEST SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (NE SORRY
+"You can't enter the apartment building from here.") (SE SORRY
+"You can't enter the office building from here.") (EAST SORRY
+"There's just a wall there, papered with various uninteresting posters.")> 
+<ROOM BEHIND-BLDG-2 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Behind Offices")
+(FDESC "back side of the office building") (LDESC
+"You are behind the office building; there is no access to the inside from
+this street. Fremzi continues north and south here; a vacant lot lies to the
+west.") (NORTH TO EDGE-W IF FALSE-FLAG ELSE
+"You are now moving down Fremzi Street, just between Brzni Street to the
+north and Besnap Street to the south. The apartment building and office
+building lie to your northeast and southeast respectively, but there is
+no access here to either. A vacant lot lies to the west.") (SOUTH TO EDGE-SW IF
+FALSE-FLAG ELSE "You continue along the street to the corner of Besnap and Fremzi;
+crowds of people are now heading east through this intersection on
+their way to the square.") (EAST SORRY
+"There's no way into the office building from here.") (WEST SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.")> 
+<ROOM EDGE-SW (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Street Corner") (FDESC
+"corner of Besnap and Fremzi") (LDESC
+"You stand at the corner of Besnap and Fremzi, away from the throngs that
+have gathered in Ostnitz Square to the east. Fremzi can be followed to the
+north and, for a short ways, to the south, while Besnap is cordoned
+off to the west. A large vacant lot lies to the northwest.") (NORTH PER
+BB2-MOVE) (SOUTH TO ANTIQUE-SIDE IF FALSE-FLAG ELSE
+"You move down Fremzi Street, stopping just short of a police barricade.
+Some uniformed police watch you casually; these are probably crowd control
+officers, restricting access to the site of the festivities. A closed
+metal door lies to the east.") (WEST SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (EAST TO BLDG-8 IF FALSE-FLAG ELSE
+"You continue along Besnap Street until you come to the front of an
+antique shop. The sign outside says:|
+|
+   Riznik's Antiques|
+ Rare Books and Curios|
+|
+The gathering crowd which surrounds you continues its relentless push toward
+Ostnitz Square to the east.") (GLOBAL BARRICADE POLICE)> 
+<ROOM BLDG-8 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Outside Antique Shop") (
+FDESC "antique shop") (LDESC
+"You're standing on Besnap Street, just outside the entrance to Riznik's
+Antique Shop. The crowd here continues to push eastward toward Ostnitz
+Square, but you can continue westward to a less congested spot.") (NORTH SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (IN-DIR P?SOUTH) (SOUTH PER ANTIQUE-ENTER) (EAST
+TO SQUARE-SW IF FALSE-FLAG ELSE
+"You continue along the street, jostled every few moments by the surging
+crowd, and stop at the intersection of Besnap Street (going east-west) and
+Ostnitz Street (going north-south), at the southwest corner of Ostnitz
+Square. The Square itself is packed with people awaiting the start of
+the Constitution Day festivities.") (WEST TO EDGE-SW IF FALSE-FLAG ELSE
+"You continue along the street to the corner of Besnap and Fremzi;
+crowds of people are now heading east through this intersection on
+their way to the square.")> 
+<OBJECT BUILDING (LOC GLOBAL-OBJECTS) (DESC "building") (SYNONYM BUILDING SHOP
+STORE STOREFRONT BOOKSTORE) (ADJECTIVE APARTMENT OFFICE CHEMIST\'S BOOK
+TAILOR\'S HARDWARE ANTIQUE) (ACTION BUILDING-F)> 
+<DEFINE-ROUTINE BUILDING-F> 
+<OBJECT ANTIQUE-SIGN (LOC BLDG-8) (DESC "sign") (SYNONYM SIGN) (FLAGS READBIT
+NDESCBIT) (ACTION ANTIQUE-SIGN-F)> 
+<DEFINE-ROUTINE ANTIQUE-SIGN-F> 
+<ROOM ANTIQUE-SHOP (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Antique Shop") (
+FDESC "inside of the antique shop") (OUT-DIR P?NORTH) (NORTH TO BLDG-8 IF
+FALSE-FLAG ELSE "You leave the shop, and reenter the gathering crowd which surrounds you
+in its relentless push toward Ostnitz Square to the east.") (IN-DIR P?SOUTH) (
+SOUTH PER COUNTER-ENTER) (GLOBAL CURIOS RARE-BOOKS) (ACTION ANTIQUE-SHOP-F)> 
+<DEFINE-ROUTINE ANTIQUE-SHOP-F> 
+<OBJECT CROWD (LOC GLOBAL-OBJECTS) (DESC "crowd of people") (SYNONYM PEOPLE
+CROWD MASSES SPECTATORS TOURIST TOURISTS) (SCENARIO 3) (ACTION CROWD-F)> 
+<DEFINE-ROUTINE CROWD-F> 
+<ROOM ANTIQUE-STORAGE (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Storage Room")
+(FDESC "storage room") (WEST TO ANTIQUE-SIDE IF FALSE-FLAG ELSE
+"You leave quietly through the side door, which closes behind you.
+You're now on a
+north-south street just around the corner from the store's entrance.
+Just south of you stands a guarded police barricade.") (OUT-DIR P?WEST) (IN-DIR
+P?NORTH) (NORTH SORRY "You would only be detained by the police.") (GLOBAL
+CURIOS RARE-BOOKS) (ACTION ANTIQUE-STORAGE-F)> 
+<DEFINE-ROUTINE ANTIQUE-STORAGE-F> 
+<OBJECT CURIOS (LOC LOCAL-GLOBALS) (DESC "curio") (SYNONYM CURIO CURIOS
+ANTIQUES ANTIQUE) (ADJECTIVE RARE) (ACTION CURIOS-F)> 
+<DEFINE-ROUTINE CURIOS-F> 
+<OBJECT RARE-BOOKS (LOC LOCAL-GLOBALS) (DESC "rare book") (SYNONYM BOOK BOOKS
+MANUSCRIPT FOLIO FOLIOS) (ADJECTIVE RARE OLD) (ACTION RARE-BOOKS-F)> 
+<DEFINE-ROUTINE RARE-BOOKS-F> 
+<OBJECT ANTIQUE-SIDE-DOOR (LOC ANTIQUE-STORAGE) (DESC "side door") (SYNONYM
+DOOR) (ADJECTIVE SIDE) (FLAGS DOORBIT NDESCBIT)> 
+<OBJECT ANTIQUE-COUNTER-DOOR (LOC ANTIQUE-STORAGE) (DESC "counter door") (
+SYNONYM DOOR) (ADJECTIVE COUNTER) (FLAGS DOORBIT NDESCBIT) (ACTION
+ANTIQUE-COUNTER-DOOR-F)> 
+<DEFINE-ROUTINE ANTIQUE-COUNTER-DOOR-F> 
+<OBJECT ANTIQUE-CONVERSATION (LOC ANTIQUE-STORAGE) (DESC "conversation") (
+SYNONYM CONVERSATION) (FLAGS NDESCBIT) (ACTION ANTIQUE-CONVERSATION-F)> 
+<DEFINE-ROUTINE ANTIQUE-CONVERSATION-F> 
+<ROOM ANTIQUE-SIDE (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Side Entrance") (
+LDESC "This is as far as you can go on Fremzi Stret, before running into the
+police cordons. A metal door, closed and locked, lies to the east.
+On it, a sign reads \"Riznik's Antiques - Deliveries Only\"") (FDESC
+"side entrance of the antique store") (IN-DIR P?EAST) (EAST SORRY
+"The door is locked from the inside.") (SOUTH SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (NORTH TO EDGE-SW IF FALSE-FLAG ELSE
+"You continue along the street to the corner of Besnap and Fremzi;
+crowds of people are now heading east through this intersection on
+their way to the square.") (GLOBAL POLICE BARRICADE)> 
+<OBJECT POLICE (LOC LOCAL-GLOBALS) (DESC "police") (SYNONYM POLICE POLICEMAN) (
+ACTION POLICE-F)> 
+<DEFINE-ROUTINE POLICE-F> 
+<OBJECT BARRICADE (LOC LOCAL-GLOBALS) (DESC "barricade") (SYNONYM BARRICADE
+CORDON)> 
+<OBJECT ANTIQUE-STREET-DOOR (LOC ANTIQUE-SIDE) (DESC "metal door") (SYNONYM
+DOOR) (ADJECTIVE METAL) (FLAGS DOORBIT NDESCBIT) (ACTION ANTIQUE-STREET-DOOR-F)
+> 
+<DEFINE-ROUTINE ANTIQUE-STREET-DOOR-F> 
+<DEFINE-ROUTINE I-CUSTOMER-LEAVES> 
+<DEFINE-ROUTINE COUNTER-ENTER> 
+<DEFINE-ROUTINE I-POLICE-ENTER> 
+<GLOBAL ANTIQUE-FLAG <>> 
+<ROOM ANTIQUE-COUNTER (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC
+"Antique Shop, Counter") (OUT-DIR P?NORTH) (NORTH TO ANTIQUE-SHOP)> 
+<OBJECT PROPRIETOR (LOC ANTIQUE-SHOP) (DESC "proprietor") (SYNONYM PROPRIETOR
+AGENT CONTACT SPY MAN RIZNIK) (ADJECTIVE OLD) (FLAGS PERSON NDESCBIT) (ACTION
+PROPRIETOR-F)> 
+<OBJECT COUNTER (LOC ANTIQUE-SHOP) (DESC "counter") (SYNONYM COUNTER) (FLAGS
+NDESCBIT) (ACTION COUNTER-F)> 
+<DEFINE-ROUTINE COUNTER-F> 
+<DEFINE-ROUTINE PROPRIETOR-F> 
+<OBJECT CUSTOMER (LOC ANTIQUE-SHOP) (DESC "customer") (SYNONYM CUSTOMER MAN) (
+FLAGS PERSON NDESCBIT) (ACTION CUSTOMER-F)> 
+<DEFINE-ROUTINE CUSTOMER-F> 
+<GLOBAL EPILOGUE-BAD-FAILS
+"|
+Epilogue|
+|
+You are taken to police headquarters, and it is there that you learn of
+the successful assassination of the American ambassador. Back home, you are
+commended for your work - drawing attention away from the assassins and
+thereby helping assure the success of the mission. Sadly, you have failed
+in your real mission, but perhaps there was really nothing you could have
+done.|
+"> 
+<DEFINE-ROUTINE ANTIQUE-ENTER> 
+<ROOM SQUARE-SW (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Ostnitz Square, SW")
+(FDESC "southwest corner of Ostnitz square") (LDESC
+"Here, at the southwest corner of Ostnitz Square, you can walk down either
+Besnap Street to the east and west, or Ostnitz Street to the north and
+south. In the Square, thousands of people have gathered for the
+festivities which are to begin at noon.") (NORTH TO BLDG-2 IF FALSE-FLAG ELSE
+"You continue through the crowds as you head down Ostnitz Street, stopping
+finally in front of a sidewalk cafe. Waiters here in traditional red robes
+cater to the mixed crowd of tourists and locals eager to watch the
+festivities while sipping on a drink in the shade. Behind the cafe to
+the west is the entrance to the building itself, which appears to be used as
+office space. A pair of policemen guard the door - added security for the
+occasion.") (SOUTH SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (EAST TO BLDG-3 IF FALSE-FLAG ELSE
+"You continue along Besnap Street until you come to the front of a closed
+bookstore. The street continues east; the town square is just to the north.") (
+NE TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+WEST TO BLDG-8 IF FALSE-FLAG ELSE
+"You continue along Besnap Street until you come to the front of an
+antique shop. The sign outside says:|
+|
+   Riznik's Antiques|
+ Rare Books and Curios|
+|
+The gathering crowd which surrounds you continues its relentless push toward
+Ostnitz Square to the east.")> 
+<ROOM BLDG-3 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Bookstore") (FDESC
+"bookstore") (LDESC
+"You are on Besnap Street in front of a closed bookstore. The street
+continues east and west here; the town square lies to the north.") (NORTH TO
+TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+SOUTH SORRY "The shop is closed and locked, presumably due to the holiday. With all
+of the security in the area, it is unlikely you could force your way in
+without being detected.") (IN-DIR P?SOUTH) (EAST TO BLDG-4 IF FALSE-FLAG ELSE
+"You continue along Besnap Street until you come to the front of a closed
+tailor's shop. Police barricades block the street to the east; the town
+square is just to the north.") (WEST TO SQUARE-SW IF FALSE-FLAG ELSE
+"You continue along the street, jostled every few moments by the surging
+crowd, and stop at the intersection of Besnap Street (going east-west) and
+Ostnitz Street (going north-south), at the southwest corner of Ostnitz
+Square. The Square itself is packed with people awaiting the start of
+the Constitution Day festivities.")> 
+<ROOM BLDG-4 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Tailor's Shop") (FDESC
+"tailor's shop") (LDESC
+"You are on Besnap Street in front of a closed tailor's shop. Police
+barricades block the street to the east, but you can continue west
+easily enough. The square lies to the north.") (NORTH TO TOWN-SQUARE IF
+FALSE-FLAG ELSE "You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (NW
+TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+SOUTH SORRY "The shop is closed and locked, presumably due to the holiday. With all
+of the security in the area, it is unlikely you could force your way in
+without being detected.") (IN-DIR P?SOUTH) (EAST SORRY
+"You move toward the barricade, then think twice as you see the line
+of policemen blocking your way.") (WEST TO BLDG-3 IF FALSE-FLAG ELSE
+"You continue along Besnap Street until you come to the front of a closed
+bookstore. The street continues west; the town square is just to the north.") (
+GLOBAL BARRICADE POLICE)> 
+<OBJECT GLOBAL-BLDGS (LOC GLOBAL-OBJECTS) (DESC "building") (SYNONYM BUILDINGS
+WINDOWS) (SCENARIO 3) (ACTION GLOBAL-BLDGS-F)> 
+<OBJECT GLOBAL-WINDOW (LOC GLOBAL-OBJECTS) (DESC "window") (SCENARIO 3) (ACTION
+GLOBAL-WINDOW-F)> 
+<DEFINE-ROUTINE GLOBAL-WINDOW-F> 
+<DEFINE-ROUTINE GLOBAL-BLDGS-F> 
+<OBJECT SQUARE-BUILDINGS (LOC TOWN-SQUARE) (DESC "building") (SYNONYM BUILDING
+BUILDINGS WINDOW WINDOWS APARTMENT) (ADJECTIVE APARTMENT) (FLAGS NDESCBIT) (
+ACTION SQUARE-BUILDINGS-F)> 
+<DEFINE-ROUTINE SQUARE-BUILDINGS-F> 
+<GLOBAL SNIPER-FLOOR 0> 
+<ROOM TOWN-SQUARE (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Ostnitz Square") (
+FDESC "middle of Ostnitz Square") (LDESC
+"You are amidst a huge crowd which has poured into the square to better
+see and hear the afternoon's events. From here, you can move in any
+direction, albeit slowly, except toward the barricades to the east.
+Behind the barricades, a raised dais has been constructed, and the
+dignitaries are already in place. A tall column here commemorates
+those who died in the Litzenburger war for independence.") (EAST SORRY
+"You move toward the barricade, then think twice as you see the line
+of policemen blocking your way.") (NE TO BLDG-6 IF FALSE-FLAG ELSE
+"You leave the square, arriving at Brzni Street in front of a chemist's
+shop. The street is blocked by barricades to the east, but it does continue
+to the west.") (NORTH TO BLDG-5 IF FALSE-FLAG ELSE
+"You leave the square, arriving at Brzni Street in front of a vacant
+storefront. The street continues east and west.") (NW TO SQUARE-NW IF
+FALSE-FLAG ELSE "You press through the crowd to the corner of Ostnitz and Brzni Streets.
+A police barricade to the north effectively closes off Ostnitz Street
+in that direction, but movement in other directions is simple enough,
+if slow due to the crowd congestion.") (WEST TO ALLEY-1 IF FALSE-FLAG ELSE
+"You press through the crowd until you reach Ostnitz Street at a point
+where a street vendor is busily peddling his wares - soda, pretzels,
+and hot dogs. His cart is practically overflowing with food, but it's
+a safe bet that it will all be gone before the afternoon is over. Behind
+the cart, to the west, is a blind alley sandwiched between the apartment
+building to your north and the office building to your south.") (SW TO
+SQUARE-SW IF FALSE-FLAG ELSE
+"You move through the crowd and finally leave the Square at its southwest
+corner, at the intersection of Besnap Street (going east-west) and
+Ostnitz Street (going north-south).") (SOUTH TO BLDG-3 IF FALSE-FLAG ELSE
+"You leave the square, arriving at Besnap Street in front of a closed
+bookstore. The street continues east and west.") (SE TO BLDG-4 IF FALSE-FLAG
+ELSE "You leave the square, arriving at Besnap Street in front of a closed
+tailor's shop. Police barricades block the street to the east.") (GLOBAL
+BARRICADE POLICE)> 
+<OBJECT COLUMN (LOC TOWN-SQUARE) (DESC "tall column") (SYNONYM COLUMN) (
+ADJECTIVE TALL MEMORIAL) (FLAGS NDESCBIT) (ACTION COLUMN-F)> 
+<DEFINE-ROUTINE COLUMN-F> 
+<OBJECT DAIS (LOC TOWN-SQUARE) (DESC "dais") (SYNONYM DAIS PODIUM) (FLAGS
+NDESCBIT) (ACTION DAIS-F)> 
+<DEFINE-ROUTINE DAIS-F> 
+<OBJECT HUTTINGER (LOC TOWN-SQUARE) (DESC "Huttinger") (SYNONYM HUTTINGER
+AMBASSADOR) (ADJECTIVE AMBASSADOR) (FLAGS NDESCBIT PERSON NOABIT NOTHEBIT) (
+ACTION HUTTINGER-F)> 
+<DEFINE-ROUTINE HUTTINGER-F> 
+<OBJECT MAYOR (LOC TOWN-SQUARE) (DESC "mayor") (SYNONYM MAYOR) (FLAGS NDESCBIT
+PERSON) (ACTION MAYOR-F)> 
+<DEFINE-ROUTINE MAYOR-F> 
+<OBJECT DIGNITARIES (LOC TOWN-SQUARE) (DESC "dignitary") (SYNONYM DIGNITARIES
+DIGNITARY) (FLAGS NDESCBIT PERSON) (ACTION DIGNITARIES-F)> 
+<DEFINE-ROUTINE DIGNITARIES-F> 
+<ROOM BLDG-6 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Chemist's Shop") (FDESC
+"chemist's shop") (LDESC
+"You are on Brzni Street, in front of a closed chemist's shop. Police
+barricades block the street to the east, though it is easy, but slow,
+going to the west. The town square lies to the south.") (NORTH SORRY
+"The shop is closed and locked, presumably due to the holiday. With all
+of the security in the area, it is unlikely you could force your way in
+without being detected.") (IN-DIR P?NORTH) (SOUTH TO TOWN-SQUARE IF FALSE-FLAG
+ELSE "You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+EAST SORRY "You move toward the barricade, then think twice as you see the line
+of policemen blocking your way.") (WEST TO BLDG-5 IF FALSE-FLAG ELSE
+"You continue down Brzni Street, arriving in front of a vacant
+storefront. The street continues west.") (SW TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+GLOBAL BARRICADE POLICE)> 
+<ROOM BLDG-5 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Empty Storefront") (
+FDESC "empty storefront") (LDESC
+"You are on Brzni Street, in front of a vacant storefront. The street
+continues east and west here; the town square lies to the south.") (NORTH SORRY
+"The shop is closed and locked, presumably due to the holiday. With all
+of the security in the area, it is unlikely you could force your way in
+without being detected.") (IN-DIR P?NORTH) (SOUTH TO TOWN-SQUARE IF FALSE-FLAG
+ELSE "You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+EAST TO BLDG-6 IF FALSE-FLAG ELSE
+"You continue along Brzni until you reach the front of a closed chemist's
+shop. Barricades block the way to the east; the town square lies to the
+south.") (WEST TO SQUARE-NW IF FALSE-FLAG ELSE
+"You press through the crowd to the corner of Ostnitz and Brzni Streets.
+A police barricade to the north effectively closes off Ostnitz Street
+in that direction, but movement in other directions is simple enough,
+if slow due to the crowd congestion.")> 
+<ROOM SQUARE-NW (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Ostnitz Square, NW")
+(FDESC "northwest corner of Ostnitz Square") (LDESC
+"This is the corner of Brzni Street, running east and west, and Ostnitz
+Street, running north and south along the western edge of Ostnitz Square.
+Though congested, your way is clear in all directions, except to the
+north, where police barricades block the street.") (NORTH SORRY
+"You would be getting rather far from the action, and you've no time to
+spare getting sidetracked.") (SOUTH TO BLDG-1 IF FALSE-FLAG ELSE
+"You move down Ostnitz Street until you come to the entrance to an apartment
+building. When you have seen this building before, it has been protected
+by doormen; today, they have been replaced by police. Something is definitely
+up here - even an occasion such as this would not normally require so much
+extra security. Your mind races - could the plot have been uncovered?") (EAST
+TO BLDG-5 IF FALSE-FLAG ELSE
+"You continue down Brzni Street, arriving in front of a vacant
+storefront. The street continues east.") (WEST TO BLDG-7 IF FALSE-FLAG ELSE
+"You continue along Brzni Street, arriving in front of a closed hardware
+store. The street continues west.") (SE TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to those
+who died in the War of Independence. Atop the column, a fifteenth century
+clock tolls the hours. Surrounding the square on all sides are stately
+buildings dating from the time of the War, most of which now have storefronts
+at ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.")> 
+<ROOM BLDG-7 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Hardware Store") (FDESC
+"hardware store") (LDESC
+"You are on Brzni Street, in front of a closed hardware store. The street
+runs east-west here.") (NORTH SORRY
+"The shop is closed and locked, presumably due to the holiday. With all
+of the security in the area, it is unlikely you could force your way in
+without being detected.") (IN-DIR P?NORTH) (WEST TO EDGE-NW IF FALSE-FLAG ELSE
+"You continue down Brzni Street, coming to the intersection with Fremzi
+Street, which runs south alongside a vacant lot to the west.") (EAST TO
+SQUARE-NW IF FALSE-FLAG ELSE
+"You press through the crowd to the corner of Ostnitz and Brzni Streets.
+A police barricade to the north effectively closes off Ostnitz Street
+in that direction, but movement in other directions is simple enough,
+if slow due to the crowd congestion.")> 
+<ROOM BLDG-1 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Apartment Building") (
+FDESC "apartment building") (LDESC
+"You're standing outside of a prestigious apartment building. Two
+policemen guard the entrance as added security for the afternoon's
+events. The street here continues north and south, and the square lies
+directly to your east.") (NORTH TO SQUARE-NW IF FALSE-FLAG ELSE
+"You press through the crowd to the corner of Ostnitz and Brzni Streets.
+A police barricade to the north effectively closes off Ostnitz Street
+in that direction, but movement in other directions is simple enough,
+if slow due to the crowd congestion.") (SOUTH TO ALLEY-1 IF FALSE-FLAG ELSE
+"You press through the crowd until you reach Ostnitz Street at a point
+where a street vendor is busily peddling his wares - soda, pretzels,
+and hot dogs. His cart is practically overflowing with food, but it's
+a safe bet that it will all be gone before the afternoon is over. Behind
+the cart, to the west, is a blind alley sandwiched between the apartment
+building to your north and the office building to your south.") (EAST TO
+TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+WEST TO APARTMENT-LOBBY IF FALSE-FLAG ELSE
+"You walk nonchalantly past the guards, nodding at them politely, and find
+yourself in the lobby. An elevator lies to the north; its door is open and
+the operator, an older woman, is standing inside. A directory, listing the
+building's occupants, is standing here as well. You can leave the building
+to the east.") (IN-DIR P?WEST) (SE TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.")> 
+<OBJECT APARTMENT-GUARDS (LOC BLDG-1) (DESC "guard") (SYNONYM GUARD GUARDS
+POLICE POLICEMAN) (FLAGS PERSON NDESCBIT) (ACTION APARTMENT-GUARDS-F)> 
+<DEFINE-ROUTINE APARTMENT-GUARDS-F> 
+<OBJECT DIRECTORY (LOC APARTMENT-LOBBY) (DESC "directory") (SYNONYM DIRECTORY
+LIST LISTING) (ADJECTIVE BUILDING APARTMENT) (FLAGS NDESCBIT READBIT) (ACTION
+DIRECTORY-F)> 
+<DEFINE-ROUTINE DIRECTORY-F> 
+<ROOM APARTMENT-LOBBY (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC
+"Apartment Lobby") (SDESC "lobby of the apartment building") (LDESC
+"This is the lobby of the apartment building; there is little of note here,
+except for the elevator, whose door stands open to the north. In front of
+you, a directory lists the occupants of the building. You can
+exit the building to the east.") (NORTH TO ELEVATOR-ROOM) (IN-DIR P?NORTH) (
+EAST TO BLDG-1 IF FALSE-FLAG ELSE
+"You leave the apartment building, and return to Ostnitz Street, where
+the crowd is packed in even tighter than before, especially east, in
+the direction of the town square.") (OUT-DIR P?EAST) (GLOBAL ELEVATOR-DOOR
+ELEVATOR-OPERATOR ELEVATOR-BUTTON ELEVATOR POLICE) (ACTION APARTMENT-LOBBY-F)> 
+<DEFINE-ROUTINE APARTMENT-LOBBY-F> 
+<OBJECT ELEVATOR (LOC LOCAL-GLOBALS) (DESC "elevator") (SYNONYM ELEVATOR LIFT)
+(ACTION ELEVATOR-F)> 
+<DEFINE-ROUTINE ELEVATOR-F> 
+<OBJECT ELEVATOR-OPERATOR (LOC LOCAL-GLOBALS) (DESC "older woman") (SYNONYM
+WOMAN OPERATOR) (ADJECTIVE OLD OLDER) (FLAGS PERSON) (ACTION
+ELEVATOR-OPERATOR-F)> 
+<DEFINE-ROUTINE ELEVATOR-OPERATOR-F> 
+<ROOM BLDG-2 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Sidewalk Cafe") (FDESC
+"sidewalk in front of the cafe") (NORTH TO ALLEY-1 IF FALSE-FLAG ELSE
+"You press through the crowd until you reach Ostnitz Street at a point
+where a street vendor is busily peddling his wares - soda, pretzels,
+and hot dogs. His cart is practically overflowing with food, but it's
+a safe bet that it will all be gone before the afternoon is over. Behind
+the cart, to the west, is a blind alley sandwiched between the apartment
+building to your north and the office building to your south.") (SOUTH TO
+SQUARE-SW IF FALSE-FLAG ELSE
+"You continue along the street, jostled every few moments by the surging
+crowd, and stop at the intersection of Besnap Street (going east-west) and
+Ostnitz Street (going north-south), at the southwest corner of Ostnitz
+Square. The Square itself is packed with people awaiting the start of
+the Constitution Day festivities.") (WEST SORRY
+"You consider trying to force your way into the building, but decide against
+it, realizing that anything that calls attention to yourself will jeopardize
+either your plan or your cover.") (IN-DIR P?WEST) (EAST TO TOWN-SQUARE IF
+FALSE-FLAG ELSE "You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (NE
+TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+ACTION BLDG-2-F)> 
+<OBJECT WAITERS (LOC BLDG-2) (DESC "waiter") (SYNONYM WAITER WAITRESS) (FLAGS
+NDESCBIT PERSON) (ACTION WAITER-F)> 
+<DEFINE-ROUTINE WAITER-F> 
+<OBJECT CAFE-FOOD (LOC BLDG-2) (DESC "food") (SYNONYM FOOD LUNCH MEAL EATS) (
+FLAGS NDESCBIT) (ACTION CAFE-FOOD-F)> 
+<DEFINE-ROUTINE CAFE-FOOD-F> 
+<OBJECT CAFE-TABLE (LOC BLDG-2) (DESC "table") (SYNONYM TABLE CHAIR SEAT) (
+FLAGS NDESCBIT) (ACTION CAFE-TABLE-F)> 
+<DEFINE-ROUTINE CAFE-TABLE-F> 
+<DEFINE-ROUTINE BLDG-2-F> 
+<DEFINE-ROUTINE I-TOPAZ-SPOTS> 
+<ROOM ALLEY-1 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Street Vendor") (FDESC
+"vendor's cart") (NORTH TO BLDG-1 IF FALSE-FLAG ELSE
+"You move down Ostnitz Street until you come to the entrance to an apartment
+building. When you have seen this building before, it has been protected
+by doormen; today, they have been replaced by police. Something is definitely
+up here - even an occasion such as this would not normally have so much in
+the way of security. You wonder if perhaps the plot has been uncovered.") (
+SOUTH TO BLDG-2 IF FALSE-FLAG ELSE
+"You continue through the crowds as you head down Ostnitz Street, stopping
+finally in front of a sidewalk cafe. Waiters here in traditional red robes
+cater to the mixed crowd of tourists and locals eager to watch the
+festivities while sipping on a drink in the shade. Behind the cafe to
+the west is the entrance to the building itself, which appears to be used as
+office space. A pair of policemen guard the door - added security for the
+occasion.") (EAST TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+WEST PER ALLEY-MOVE) (NE TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (SE
+TO TOWN-SQUARE IF FALSE-FLAG ELSE
+"You push your way through the crowd, reaching a spot near the middle of
+the square where a graceful column stands, dedicated to the Litzenburgers
+who died in the War of Independence which is celebrated here today.
+Surrounding the square on all sides are stately buildings dating from the 18th
+century, most of which now have storefronts on ground level.|
+|
+Stretching from northeast through southeast, a series of barricades has been
+erected to separate the crowd from the dignitaries attending the ceremonies.
+Hundreds of uniformed police guard the barricades, and scores of plainclothes
+police are milling around nearby, heads cocked toward their earphones to
+enable them to hear over the ever louder crowd. The dais is raised about
+ten feet, and the dignitaries are just starting to take their positions.") (
+ACTION ALLEY-1-F) (GLOBAL ALLEY SODA-CANS PRETZELS VENDOR-CART HOT-DOGS VENDOR)
+> 
+<DEFINE-ROUTINE ALLEY-MOVE> 
+<DEFINE-ROUTINE ALLEY-1-F> 
+<OBJECT BUSINESS-CARD (DESC "business card") (SYNONYM CARD) (ADJECTIVE BUSINESS
+) (SIZE 2) (FLAGS READBIT TAKEBIT) (ACTION BUSINESS-CARD-F)> 
+<DEFINE-ROUTINE BUSINESS-CARD-F> 
+<DEFINE-ROUTINE CAN-BE-FOUND> 
+<OBJECT BAD-CLOTHES (DESC "your clothes") (SYNONYM CLOTHES SOCKS SHIRT PANTS
+CLOTHING CLOTH COAT) (ADJECTIVE TRENCH) (FLAGS NARTICLEBIT WORNBIT SEARCHBIT
+SURFACEBIT OPENBIT CONTBIT NOTHEBIT NOABIT) (ACTION BYSTANDER-CLOTHES-F)> 
+<DEFINE-ROUTINE START-CHASE> 
+<ROOM TOPAZ-ROOM (LOC ROOMS) (DESC "Topaz Start Point") (FDESC
+"table he was seated at") (PATH BLDG-2) (PATH-TIME 15)> 
+<DEFINE-ROUTINE I-TOPAZ-END> 
+<DEFINE-ROUTINE TOPAZ-KILLS> 
+<DEFINE-ROUTINE I-TOPAZ> 
+<DEFINE-ROUTINE REAL-HALL> 
+<DEFINE-ROUTINE HALL-OBJECT?> 
+<GLOBAL FIGHT-IN-PROGRESS <>> 
+<GLOBAL TOPPLE-CHASE 0> 
+<GLOBAL TOPPLED-CART-TRANSIENT <PLTABLE ALLEY-1 ALLEY-2>> 
+<DEFINE-ROUTINE IN-PUBLIC?> 
+<OBJECT VENDOR (LOC LOCAL-GLOBALS) (DESC "vendor") (SYNONYM PEDDLER VENDOR
+SALESMAN MAN) (ADJECTIVE STREET SODA PRETZEL ICE-CREAM) (FLAGS PERSON) (ACTION
+VENDOR-F)> 
+<OBJECT SODA (LOC TOPAZ-ROOM) (DESC "can of soda") (SYNONYM CAN SODA) (
+ADJECTIVE SODA) (FLAGS TAKEBIT) (ACTION FOOD-F)> 
+<DEFINE-ROUTINE FOOD-F> 
+<OBJECT SODA-CANS (LOC LOCAL-GLOBALS) (DESC "bunch of soda cans") (SYNONYM CANS
+BUNCH CAN DRINK SODA) (ADJECTIVE SODA SOFT) (ACROSS SODA) (ACTION
+VENDOR-STUFF-F)> 
+<DEFINE-ROUTINE VENDOR-STUFF-F> 
+<OBJECT PRETZELS (LOC LOCAL-GLOBALS) (DESC "bunch of pretzels") (SYNONYM BUNCH
+PRETZELS PRETZEL FOOD) (ACROSS PRETZEL) (ACTION VENDOR-STUFF-F)> 
+<OBJECT PRETZEL (LOC TOPAZ-ROOM) (DESC "pretzel") (SYNONYM PRETZEL) (FLAGS
+TAKEBIT) (ACTION FOOD-F)> 
+<OBJECT HOT-DOGS (LOC LOCAL-GLOBALS) (DESC "hot dog") (SYNONYM DOG HOT-DOG
+HOTDOG FOOD) (ADJECTIVE HOT) (FLAGS TAKEBIT) (ACTION VENDOR-STUFF-F)> 
+<DEFINE-ROUTINE VENDOR-F> 
+<OBJECT VENDOR-CART (LOC LOCAL-GLOBALS) (DESC "vendor's cart") (SYNONYM CART
+STAND) (ADJECTIVE VENDOR\'S) (FLAGS NDESCBIT) (ACTION VENDOR-CART-F)> 
+<GLOBAL TOPAZ-FIGHT <>> 
+<DEFINE-ROUTINE VENDOR-CART-F> 
+<GLOBAL ALLEY-OOPS
+"You press through the crowd until you reach Ostnitz Street at a point
+where a street vendor is busily cleaning up his overturned cart. Soda
+cans and pretzels lie everywhere, making the congestion even worse than
+it was before. Behind the cart, to the west, is a blind alley sandwiched
+between the apartment building to your north and the office building to
+your south. It might take a while to get there, though, with all the mess
+in the way."> 
+<DEFINE-ROUTINE DYNAMIC-DESC> 
+<OBJECT CART-DEBRIS (LOC GLOBAL-OBJECTS) (DESC "debris") (SYNONYM DEBRIS) (
+SCENARIO 3) (TRANSIENT <LTABLE>)> 
+<ROOM ALLEY-2 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Behind the Cart") (
+FDESC "alley just behind the vendor's cart") (EAST TO ALLEY-1 IF FALSE-FLAG
+ELSE "You leave the alley at Ostnitz Street; the street vendor is still
+here, though his stock is somewhat depleted. The square is before you,
+still practically bursting with humanity. The street continues to the
+north and south.") (WEST PER ALLEY-23) (GLOBAL ALLEY SODA-CANS PRETZELS
+HOT-DOGS VENDOR-CART VENDOR) (ACTION ALLEY-2-F)> 
+<DEFINE-ROUTINE ALLEY-23> 
+<GLOBAL CART-TOPPLED? <>> 
+<DEFINE-ROUTINE ALLEY-2-F> 
+<ROOM ALLEY-3 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "End of Blind Alley") (
+FDESC "end of the alley") (WEST SORRY
+"The wall climbs perhaps twenty feet; there's no way you could get over it.") (
+EAST TO ALLEY-2 IF FALSE-FLAG ELSE
+"You head back toward Ostnitz street, stopping just behind the vendor's
+cart.") (UP PER FIRE-LADDER-REACH) (ACTION ALLEY-3-F) (GLOBAL FIRE-LADDER
+FIRE-WINDOW ALLEY)> 
+<DEFINE-ROUTINE ALLEY-3-F> 
+<OBJECT TRASH-CAN (LOC ALLEY-3) (DESC "trash can") (SYNONYM CAN) (ADJECTIVE
+TRASH) (FDESC "Leaning up against the office building, a foul-smelling trash can is
+standing.") (LDESC "An empty trash can is standing here.") (FLAGS TAKEBIT
+CONTBIT OPENBIT TRYTAKEBIT) (CAPACITY 40) (ACTION TRASH-CAN-F)> 
+<OBJECT BOXES (LOC ALLEY-3) (DESC "box") (SYNONYM BOXES BOX) (ADJECTIVE BROKEN)
+(LDESC "A few dozen discarded boxes are strewn on the ground here.") (ACTION
+BOXES-F)> 
+<DEFINE-ROUTINE BOXES-F> 
+<GLOBAL ON-THE-CAN <>> 
+<DEFINE-ROUTINE TRASH-CAN-F> 
+<GLOBAL FIRE-WINDOW-TBL <LTABLE 0 0 0 0 0>> 
+<OBJECT FIRE-WINDOW (LOC LOCAL-GLOBALS) (DESC "window") (SYNONYM WINDOW) (
+ACTION FIRE-WINDOW-F)> 
+<GLOBAL CAN-UNDER-LADDER <>> 
+<DEFINE-ROUTINE FIRE-WINDOW-F> 
+<OBJECT ALLEY (LOC LOCAL-GLOBALS) (DESC "alley") (SYNONYM ALLEY) (ADJECTIVE
+BLIND) (FLAGS VOWELBIT) (ACTION ALLEY-F)> 
+<DEFINE-ROUTINE ALLEY-F> 
+<OBJECT FIRE-LADDER (LOC LOCAL-GLOBALS) (DESC "ladder") (SYNONYM RUNG RUNGS
+LADDER FIRE-ESCAPE ESCAPE) (ADJECTIVE FIRE-ESCAPE FIRE) (ACTION FIRE-LADDER-F)>
+
+<DEFINE-ROUTINE FIRE-LADDER-F> 
+<DEFINE-ROUTINE FIRE-LADDER-REACH> 
+<ROOM FIRE-1 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Fire Escape, 1st Floor")
+(FDESC "bottom of the fire escape") (LDESC
+"You are at the bottom of the fire-escape ladder, about ten feet above
+the ground. The ladder rises to each of the upper four levels and it's
+just a short drop to the ground. A toppled trash can lies in the alley
+beneath your feet.") (DOWN TO ALLEY-3 IF TRUE-FLAG ELSE
+"You drop the last four feet to the ground.") (UP PER FIRE-2-MOVE) (SIZE 1) (
+FLAGS PENBIT) (GLOBAL FIRE-LADDER ALLEY)> 
+<ROOM FIRE-2 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Fire Escape, 2nd Floor")
+(FDESC "fire escape at the second floor") (DOWN PER FIRE-1-MOVE) (UP PER
+FIRE-3-MOVE) (NORTH TO HALL-1 IF FALSE-FLAG ELSE
+"You pull yourself through the window, and find yourself staring at a long
+hallway leading north.") (IN-DIR P?NORTH) (GLOBAL FIRE-LADDER ALLEY FIRE-WINDOW
+) (SIZE 2) (FLAGS PENBIT) (ACTION FIRE-ROOM-F)> 
+<ROOM FIRE-3 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Fire Escape, 3rd Floor")
+(FDESC "fire escape at the third floor") (DOWN PER FIRE-2-MOVE) (UP PER
+FIRE-4-MOVE) (NORTH TO HALL-1 IF FALSE-FLAG ELSE
+"You pull yourself through the window, and find yourself staring at a long
+hallway leading north.") (IN-DIR P?NORTH) (GLOBAL FIRE-LADDER ALLEY FIRE-WINDOW
+) (SIZE 3) (FLAGS PENBIT) (ACTION FIRE-ROOM-F)> 
+<ROOM FIRE-4 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Fire Escape, 4th Floor")
+(FDESC "fire escape at the fourth floor") (DOWN PER FIRE-3-MOVE) (UP PER
+FIRE-5-MOVE) (NORTH TO HALL-1 IF FALSE-FLAG ELSE
+"You pull yourself through the window, and find yourself staring at a long
+hallway leading north.") (IN-DIR P?NORTH) (GLOBAL FIRE-LADDER ALLEY FIRE-WINDOW
+) (SIZE 4) (FLAGS PENBIT) (ACTION FIRE-ROOM-F)> 
+<ROOM FIRE-5 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Fire Escape, 5th Floor")
+(FDESC "fire escape at the fifth floor") (DOWN PER FIRE-4-MOVE) (UP SORRY
+"The ladder ends here; there is no access to the roof.") (NORTH TO HALL-1 IF
+FALSE-FLAG ELSE "You pull yourself through the window, and find yourself staring at a long
+hallway leading north.") (IN-DIR P?NORTH) (GLOBAL FIRE-LADDER ALLEY FIRE-WINDOW
+) (SIZE 5) (FLAGS PENBIT) (ACTION FIRE-ROOM-F)> 
+<GLOBAL FIRE-TBL <PLTABLE FIRE-1 FIRE-2 FIRE-3 FIRE-4 FIRE-5>> 
+<DEFINE-ROUTINE FIRE-1-MOVE> 
+<DEFINE-ROUTINE FIRE-2-MOVE> 
+<DEFINE-ROUTINE FIRE-3-MOVE> 
+<DEFINE-ROUTINE FIRE-4-MOVE> 
+<DEFINE-ROUTINE FIRE-5-MOVE> 
+<DEFINE-ROUTINE FIRE-MOVE> 
+<GLOBAL HALL-FLOOR 0> 
+<ROOM HALL-1 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Hallway, Fire Escape") (
+FDESC "hallway near the fire escape") (LDESC
+"You're at the end of a north-south hallway. There are no doors right here;
+they are farther down the hall. The window leading to the fire-escape is
+open.") (NORTH TO HALL-2 IF FALSE-FLAG ELSE
+"You continue down the hall to the next set of doorways, one to the east
+and one to the west. You're now about a third of the way toward the end
+of the hall.") (SOUTH PER LEAVE-HALL) (OUT-DIR P?SOUTH) (EAST SORRY
+"There is no door to the east.") (WEST SORRY "There is no door to the west.") (
+SIZE 4) (FLAGS HUTBIT) (2ND-FLOOR HALL-21) (3RD-FLOOR HALL-31) (4TH-FLOOR
+HALL-41) (5TH-FLOOR HALL-51) (GLOBAL FIRE-WINDOW ELEVATOR ELEVATOR-OPERATOR)> 
+<DEFINE-ROUTINE LEAVE-HALL> 
+<GLOBAL HALL-EXIT-TBL <LTABLE 0 FIRE-2 FIRE-3 FIRE-4 FIRE-5>> 
+<ROOM HALL-2 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Hallway, South") (FDESC
+"southern part of the hallway") (LDESC
+"You are about one-third of the way betwween the southern and northern
+ends of the hallway. Doors are on both sides of you, east and west.") (NORTH TO
+HALL-3 IF FALSE-FLAG ELSE
+"You continue down the hall to the next set of doorways, one to the east
+and one to the west. You're now about halfway down the hall.") (SOUTH TO HALL-1
+IF FALSE-FLAG ELSE
+"You continue to the end of hall, where a window leads to a fire-escape
+ladder connecting the various floors of the building.") (EAST SORRY
+"The door is locked.") (WEST SORRY "The door is locked.") (FLAGS HUTBIT) (
+2ND-FLOOR HALL-22) (3RD-FLOOR HALL-32) (4TH-FLOOR HALL-42) (5TH-FLOOR HALL-52)
+(SIZE 3) (GLOBAL HALL-DOOR-E HALL-DOOR-W ELEVATOR ELEVATOR-OPERATOR)> 
+<ROOM HALL-3 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Hallway, Middle") (FDESC
+"middle of the hallway") (LDESC
+"You are halfway between the northern and southern ends of the hallway; closed
+doors lie on either side of you.") (NORTH TO HALL-4 IF FALSE-FLAG ELSE
+"You continue down the hall to the last set of doorways, one to the east
+and one to the west. Before you, to the north is an elevator with a white
+call button.") (SOUTH TO HALL-2 IF FALSE-FLAG ELSE
+"You continue down the hall to the next set of doorways, one to the east
+and one to the west. You're now about two-thirds of the way toward the end
+of the hall.") (EAST SORRY "The door is locked.") (WEST SORRY
+"The door is locked.") (FLAGS HUTBIT) (2ND-FLOOR HALL-23) (3RD-FLOOR HALL-33) (
+4TH-FLOOR HALL-43) (5TH-FLOOR HALL-53) (SIZE 2) (GLOBAL HALL-DOOR-E HALL-DOOR-W
+ELEVATOR ELEVATOR-OPERATOR)> 
+<ROOM HALL-4 (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Hallway, North End") (
+FDESC "north end of the hallway") (LDESC
+"You are at the northern end of the hallway; closed doors lie on either side
+of you, east and west. In front of you, to the north, is an elevator,
+beside which is a white call button.") (NORTH TO ELEVATOR-ROOM IF ELEVATOR-DOOR
+IS OPEN) (IN-DIR P?NORTH) (SOUTH TO HALL-3 IF FALSE-FLAG ELSE
+"You continue down the hall to the next set of doorways, one to the east
+and one to the west. You're now about a third of the way toward the end
+of the hall.") (EAST SORRY "The door is locked.") (WEST SORRY
+"The door is locked.") (FLAGS HUTBIT) (2ND-FLOOR HALL-24) (3RD-FLOOR HALL-34) (
+4TH-FLOOR HALL-44) (5TH-FLOOR HALL-54) (SIZE 1) (GLOBAL HALL-DOOR-E HALL-DOOR-W
+ELEVATOR-BUTTON ELEVATOR-DOOR ELEVATOR-OPERATOR ELEVATOR)> 
+<ROOM ELEVATOR-ROOM (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "In the Elevator")
+(FDESC "elevator") (LDESC
+"You're standing in the elevator of the apartment building...") (OUT-DIR
+P?SOUTH) (SOUTH TO HALL-4) (GLOBAL ELEVATOR-DOOR ELEVATOR-OPERATOR) (ACTION
+ELEVATOR-ROOM-F)> 
+<DEFINE-ROUTINE ELEVATOR-ROOM-F> 
+<DEFINE-ROUTINE ELEVATOR-SEQUENCE> 
+<DEFINE-ROUTINE I-ELEVATOR-LEAVES> 
+<OBJECT ELEVATOR-DOOR (LOC LOCAL-GLOBALS) (DESC "elevator door") (SYNONYM DOOR)
+(ADJECTIVE ELEVATOR) (FLAGS DOORBIT) (ACTION ELEVATOR-DOOR-F)> 
+<DEFINE-ROUTINE ELEVATOR-DOOR-F> 
+<OBJECT ELEVATOR-BUTTON (LOC LOCAL-GLOBALS) (DESC "call button") (SYNONYM
+BUTTON) (ADJECTIVE WHITE CALL) (ACTION ELEVATOR-BUTTON-F)> 
+<DEFINE-ROUTINE ELEVATOR-BUTTON-F> 
+<DEFINE-ROUTINE I-ELEVATOR-ARRIVES> 
+<OBJECT HALL-DOOR-E (LOC LOCAL-GLOBALS) (DESC "eastern door") (SYNONYM DOOR) (
+ADJECTIVE EAST EASTERN E) (FLAGS DOORBIT) (ACTION HALL-DOOR-F)> 
+<OBJECT HALL-DOOR-W (LOC LOCAL-GLOBALS) (DESC "western door") (SYNONYM DOOR) (
+ADJECTIVE WEST WESTERN W) (FLAGS DOORBIT) (ACTION HALL-DOOR-F)> 
+<DEFINE-ROUTINE HALL-DOOR-F> 
+<GLOBAL AWAITING-PASSWORD <>> 
+<GLOBAL HIDING-BEHIND-DOOR <>> 
+<DEFINE-ROUTINE CHECK-PASSWORD> 
+<DEFINE-ROUTINE SNIPER-SPOTS?> 
+<DEFINE-ROUTINE MOVE-ALL> 
+<OBJECT SNIPER-WINDOW (LOC SNIPER-ROOM) (DESC "window") (SYNONYM WINDOW) (FLAGS
+NDESCBIT) (ACTION SNIPER-WINDOW-F)> 
+<DEFINE-ROUTINE SNIPER-WINDOW-F> 
+<OBJECT SNIPER (LOC SNIPER-ROOM) (DESC "sniper") (SYNONYM SNIPER MAN IRANIAN
+ASSASSIN) (ADJECTIVE DARK) (FLAGS NDESCBIT PERSON) (ACTION SNIPER-F)> 
+<OBJECT SNIPER-CORPSE (DESC "sniper's corpse") (SYNONYM SNIPER CORPSE SNIPER\'S
+IRANIAN) (FLAGS NDESCBIT)> 
+<DEFINE-ROUTINE SNIPER-F> 
+<OBJECT SNIPER-RIFLE (LOC SNIPER-ROOM) (DESC "high-powered rifle") (SYNONYM
+RIFLE) (ADJECTIVE HIGH-POWERED) (FLAGS NDESCBIT) (ACTION SNIPER-RIFLE-F)> 
+<DEFINE-ROUTINE SNIPER-RIFLE-F> 
+<GLOBAL SNIPER-CODE <>> 
+<GLOBAL SNIPER-PASSWORD-TBL <PLTABLE "Besnap" "Riznik" "Belboz" "Brzni">> 
+<GLOBAL SNIPER-PASSWORD-VOC <PLTABLE W?BESNAP W?RIZNIK W?BELBOZ W?BRZNI>> 
+<ROOM SNIPER-ROOM (LOC ROOMS) (PATH 0) (PATH-TIME 0) (DESC "Sniper's Room") (
+FDESC "sniper's room") (WEST TO HALL-1 IF HALL-DOOR-E IS OPEN) (OUT-DIR P?WEST)
+(GLOBAL HALL-DOOR-E) (ACTION SNIPER-ROOM-F)> 
+<DEFINE-ROUTINE SNIPER-ROOM-F> 
+<GLOBAL APT-LETTERS <PTABLE "A" "B" "C" "D" "E" "F">> 
+<DEFINE-ROUTINE TELL-ROOM-NUMBER> 
+<GLOBAL CARDINALS <PLTABLE "first" "second" "third" "fourth" "fifth">> 
+<DEFINE-ROUTINE FIRE-ROOM-F> 
+<GLOBAL CHASE-FLAG <>> 
+<OBJECT GLOBAL-TOPAZ (LOC GLOBAL-OBJECTS) (SCENARIO 3) (DESC "Topaz") (SYNONYM
+TOPAZ AGENT) (ADJECTIVE AGENT) (FLAGS NOABIT NOTHEBIT) (ACTION GLOBAL-TOPAZ-F)>
+
+<DEFINE-ROUTINE GLOBAL-TOPAZ-F> 
+<OBJECT TOPAZ (LOC BLDG-2) (DESC "Topaz") (LDESC
+"Topaz is lying unconscious on the ground.") (SYNONYM TOPAZ AGENT MAN) (
+ADJECTIVE AGENT) (FLAGS NDESCBIT NOABIT NOTHEBIT CONTBIT SURFACEBIT PERSON) (
+CAPACITY 100) (ACTION TOPAZ-F)> 
+<DEFINE-ROUTINE TOPAZ-F> 
+<OBJECT REMINGTON (DESC "Remington") (SYNONYM GUN REVOLVER PISTOL REMINGTON) (
+ADJECTIVE REMINGTON) (FLAGS TAKEBIT) (ACTION REMINGTON-F)> 
+<DEFINE-ROUTINE REMINGTON-F> 
+<DEFINE-ROUTINE GUN-POINT> 
+<DEFINE-ROUTINE TOPAZ-VISIBLE?> 
+<DEFINE-ROUTINE TELL-TOPAZ-MOVEMENT> 
+<DEFINE-ROUTINE TOPAZ-DESC> 
+<GLOBAL TOPAZ-IN-HALL <>> 
+<GLOBAL TOPAZ-SPOT-COUNT 0> 
+<DEFINE-ROUTINE PICK-NAME> 
+<GLOBAL DIR-NAMES <LTABLE "Brgmiz" 6 "Dornik" 6 "Blenka" 6 "Cyrink" 6
+"Endrizen" 8 "Galnitz" 7 "Mrtzki" 6 "Profnim" 7 "Onilik" 6 "Brzni" 5 "Lebniz" 6
+"Brlensk" 7 "Rivni" 5 "Cnezeni" 7 "Veznich" 7 "Lengnoz" 7 "Gentezek" 8
+"Carlyni" 7 "Dimwitz" 7 "Urg" 3 "Robnerim" 8 "Bextra" 6 "Winip" 5 "Kooplitz" 8
+"Sinkriz" 7 "Blivik" 6 "Flipni" 6>> 
+<GLOBAL APT-DIR <LTABLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>> 
+<DEFINE-ROUTINE FILL-DIR> 
+<DEFINE-ROUTINE PRINT-OPEN-WINDOWS> 
+<GLOBAL SNIPER-HALL 0> 
+<DEFINE-ROUTINE PICK-OPEN-WINDOWS> 
+<DEFINE-ROUTINE SNIPER-INIT> 
+<DEFINE-ROUTINE FILL-VACANCIES> 
+<DEFINE-ROUTINE PRINT-APT-DIR> 
+<GLOBAL FLOOR-PROPS <LTABLE 0 P?2ND-FLOOR P?3RD-FLOOR P?4TH-FLOOR P?5TH-FLOOR>>
+
+<OBJECT HALL-21> 
+<OBJECT HALL-31> 
+<OBJECT HALL-41> 
+<OBJECT HALL-51> 
+<OBJECT HALL-22> 
+<OBJECT HALL-32> 
+<OBJECT HALL-42> 
+<OBJECT HALL-52> 
+<OBJECT HALL-23> 
+<OBJECT HALL-33> 
+<OBJECT HALL-43> 
+<OBJECT HALL-53> 
+<OBJECT HALL-24> 
+<OBJECT HALL-34> 
+<OBJECT HALL-44> 
+<OBJECT HALL-54> 

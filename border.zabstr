@@ -1,0 +1,1437 @@
+
+<ROOM OUTF-1 (LOC ROOMS) (DESC "Outside Fence") (PATH 0) (EAST TO OUTF-2 IF
+FALSE-FLAG ELSE "You crawl along the ground until you reach a point directly south of the
+next guard tower.") (WEST SORRY
+"That would put you directly in front of the border station, and that
+would be suicidal.") (SOUTH PER NOMANS-MOVE) (SE SORRY
+"Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the forest to the south.") (SW
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the forest to the south.") (
+NORTH PER FENCE-CROSS) (NOMAN <TABLE <TABLE 180 180 0 0> <TABLE 270 225 0 0> <
+TABLE 270 240 0 0> C2>) (ACROSS INF-1) (NS 1) (EW 3) (ACTION OUTF-F) (GPOS 0) (
+FLAGS GVIEWBIT SLVIEWBIT) (GLOBAL SEARCHLIGHTS FENCE FENCE-HOLE FENCE-SIGN
+TOWER GUARDS BORDER-FENCE)> 
+<DEFINE-ROUTINE OUTF-F> 
+<OBJECT CAR-GUARDS (LOC GLOBAL-OBJECTS) (DESC "men from the car") (SYNONYM MEN
+GUARDS) (FLAGS SEARCHBIT) (SCENARIO 2) (ACTION CAR-GUARDS-F)> 
+<DEFINE-ROUTINE CAR-GUARDS-F> 
+<OBJECT SCOUT (DESC "guard")> 
+<OBJECT GLOBAL-SCOUT (LOC GLOBAL-OBJECTS) (DESC "guard") (SYNONYM GUARD SCOUT)
+(ADJECTIVE LONE SINGLE) (SCENARIO 2) (ACTION GLOBAL-SCOUT-F)> 
+<DEFINE-ROUTINE GLOBAL-SCOUT-F> 
+<DEFINE-ROUTINE SCOUT-TELL> 
+<OBJECT GUARDS (LOC LOCAL-GLOBALS) (DESC "guard") (SYNONYM GUARDS GUARD MEN) (
+ACTION GUARDS-F)> 
+<DEFINE-ROUTINE GUARDS-F> 
+<DEFINE-ROUTINE FLUSH-WATCHER> 
+<DEFINE-ROUTINE FACE-TELL> 
+<ROOM INF-1 (LOC ROOMS) (NS 1) (EW 3) (PATH 0) (DESC "Inside Fence") (EAST TO
+INF-2 IF FALSE-FLAG ELSE
+"You crawl along the ground until you reach a point directly south of the
+next guard tower.") (WEST SORRY
+"That would put you directly in front of the border station, and that
+would be suicidal.") (NW SORRY
+"That would put you directly in front of the border station, and that
+would be suicidal.") (SOUTH PER FENCE-CROSS) (NE PER GUARD-MOVE-TWR) (NORTH PER
+GUARD-CATCH) (ACROSS OUTF-1) (ACTION INF-F) (GPOS 0) (FLAGS GVIEWBIT) (GLOBAL
+SEARCHLIGHTS FENCE FENCE-HOLE FENCE-SIGN TOWER GUARDS BORDER-FENCE)> 
+<DEFINE-ROUTINE INF-F> 
+<DEFINE-ROUTINE FENCE-CROSS> 
+<ROOM OUTF-2 (LOC ROOMS) (DESC "Outside Fence") (NS 1) (EW 4) (PATH 0) (NORTH
+PER FENCE-CROSS) (EAST TO OUTF-3 IF FALSE-FLAG ELSE
+"You crawl along the ground until you reach a point directly south of the
+next guard tower.") (WEST TO OUTF-1 IF FALSE-FLAG ELSE
+"You crawl along the ground until you reach a point directly south of the
+next guard tower.") (SOUTH PER NOMANS-MOVE) (SE SORRY
+"Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the forest to the south.") (SW
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the forest to the south.") (
+NOMAN <TABLE <TABLE 90 135 0 0> <TABLE 180 180 0 0> <TABLE 270 225 0 0> D2>) (
+ACROSS INF-2) (ACTION OUTF-F) (GPOS 90) (FLAGS GVIEWBIT SLVIEWBIT) (GLOBAL
+SEARCHLIGHTS FENCE FENCE-HOLE FENCE-SIGN TOWER GUARDS BORDER-FENCE)> 
+<ROOM INF-2 (LOC ROOMS) (NS 1) (EW 4) (PATH 0) (DESC "Inside Fence") (EAST TO
+INF-3 IF FALSE-FLAG ELSE
+"You crawl along the ground until you reach a point directly south of the
+next guard tower.") (WEST TO INF-1 IF FALSE-FLAG ELSE
+"You crawl along the ground until you reach a point directly south of the
+next guard tower.") (NE PER GUARD-CATCH) (NW PER GUARD-CATCH) (NORTH PER
+GUARD-MOVE-TWR) (SOUTH PER FENCE-CROSS) (ACROSS OUTF-2) (ACTION INF-F) (GPOS 90
+) (FLAGS GVIEWBIT) (GLOBAL SEARCHLIGHTS FENCE FENCE-HOLE FENCE-SIGN TOWER
+GUARDS BORDER-FENCE)> 
+<ROOM OUTF-3 (LOC ROOMS) (DESC "Outside Fence") (NS 1) (EW 5) (PATH 0) (NORTH
+PER FENCE-CROSS) (EAST SORRY "That would be suicidal.") (WEST TO OUTF-2 IF
+FALSE-FLAG ELSE "You crawl along the ground until you reach a point directly south of the
+next guard tower.") (SOUTH PER NOMANS-MOVE) (SE SORRY
+"Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the forest to the south.") (SW
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the forest to the south.") (
+NOMAN <TABLE <TABLE 90 120 0 0> <TABLE 90 135 0 0> <TABLE 180 180 0 0> E2>) (
+ACROSS INF-3) (ACTION OUTF-F) (GPOS 180) (FLAGS GVIEWBIT SLVIEWBIT) (GLOBAL
+SEARCHLIGHTS FENCE FENCE-HOLE FENCE-SIGN TOWER GUARDS BORDER-FENCE)> 
+<ROOM INF-3 (LOC ROOMS) (NS 1) (EW 5) (PATH 0) (DESC "Inside Fence") (EAST
+SORRY "That would be suicidal.") (WEST TO INF-2 IF FALSE-FLAG ELSE
+"You crawl along the ground until you reach a point directly south of the
+next guard tower.") (NW PER GUARD-MOVE-TWR) (NORTH PER GUARD-CATCH) (NE SORRY
+"That would be suicidal.") (SOUTH PER FENCE-CROSS) (ACROSS OUTF-3) (ACTION
+INF-F) (GPOS 180) (FLAGS GVIEWBIT) (GLOBAL SEARCHLIGHTS FENCE FENCE-HOLE
+FENCE-SIGN TOWER GUARDS BORDER-FENCE)> 
+<OBJECT FENCE-HOLE (LOC LOCAL-GLOBALS) (DESC "hole") (SYNONYM HOLE SLIT CUT
+BREAK) (ACTION FENCE-HOLE-F)> 
+<DEFINE-ROUTINE FENCE-HOLE-F> 
+<DEFINE-ROUTINE GUARD-CATCH> 
+<DEFINE-ROUTINE GUARD-MOVE-TWR> 
+<DEFINE-ROUTINE GUARD-MOVE-BDR> 
+<DEFINE-ROUTINE GUARD-MOVE-INF> 
+<DEFINE-ROUTINE LADDER-CLIMB> 
+<DEFINE-ROUTINE LADDER-DESCEND> 
+<ROOM TOWER-SOUTH (LOC ROOMS) (NS 1) (EW 4) (GPOS 90) (PATH 0) (DESC
+"Tower, South Side") (LDESC
+"The guard post itself looks both north and south. To the south, one can
+look out over the no-man's-land and toward the forest.
+The machine gun bolted to the floor is a grim reminder of the obstacles you
+have faced so far. To the north, only a few feet beyond reach and about
+five feet below you, lies the border fence.") (NORTH SORRY
+"That would mean jumping off the tower to your death.") (OUT-DIR P?WEST) (WEST
+TO LADDER-TOP IF TOWER-DOOR IS OPEN) (FLAGS GVIEWBIT) (GLOBAL TOWER-DOOR
+BORDER-FENCE FENCE TOWER)> 
+<OBJECT GLOBAL-MACHINE-GUN (LOC GLOBAL-OBJECTS) (DESC "machine gun") (SYNONYM
+GUN GUNS MACHINE-GUN) (SCENARIO 2) (ADJECTIVE MACHINE) (ACTION
+GLOBAL-MACHINE-GUN-F)> 
+<DEFINE-ROUTINE GLOBAL-MACHINE-GUN-F> 
+<OBJECT MACHINE-GUN (LOC TOWER-SOUTH) (DESC "machine gun") (SYNONYM GUN
+MACHINE-GUN) (ADJECTIVE MACHINE) (FLAGS NDESCBIT) (ACTION MACHINE-GUN-F)> 
+<DEFINE-ROUTINE MACHINE-GUN-F> 
+<DEFINE-ROUTINE TOWER-ENTRY> 
+<ROOM LADDER-TOP (LOC ROOMS) (NS 1) (EW 4) (GPOS 90) (PATH 0) (DESC
+"Tower Entrance") (DOWN PER LADDER-DESCEND) (IN-DIR P?EAST) (EAST PER
+TOWER-ENTRY) (FLAGS GVIEWBIT) (GLOBAL LADDER GUARDS TOWER TOWER-DOOR) (ACTION
+LADDER-TOP-F)> 
+<DEFINE-ROUTINE LADDER-TOP-F> 
+<OBJECT BRACE-POST (LOC LADDER-TOP) (DESC "post") (SYNONYM POST POSTS) (
+ADJECTIVE SW SOUTHWEST) (FLAGS NDESCBIT) (ACTION BRACE-POST-F)> 
+<DEFINE-ROUTINE BRACE-POST-F> 
+<OBJECT TOWER-DOOR (LOC LOCAL-GLOBALS) (DESC "door") (SYNONYM DOOR) (ADJECTIVE
+TOWER METAL GUARD) (FLAGS NDESCBIT DOORBIT) (ACTION TOWER-DOOR-F)> 
+<DEFINE-ROUTINE TOWER-DOOR-F> 
+<GLOBAL GUARD-FOOLED <>> 
+<DEFINE-ROUTINE I-GUARD-BACK> 
+<OBJECT GUARD-LEG (DESC "guard's leg") (SYNONYM GUARD LEG) (ADJECTIVE GUARDS
+GUARD\'S) (FLAGS NDESCBIT) (ACTION GUARD-LEG-F)> 
+<DEFINE-ROUTINE GUARD-LEG-F> 
+<DEFINE-ROUTINE START-GUARD-CHASE> 
+<GLOBAL GUARD-CHASE <>> 
+<GLOBAL GUARD-CHASE-TIME <>> 
+<OBJECT INJURED-GUARD (DESC "crumpled body") (FDESC
+"The crumpled body of the fallen guard is lying on the ground. Beneath
+him lies his machine gun.") (SYNONYM BODY HEAP GUN MACHINE-GUN) (ADJECTIVE
+INJURED MACHINE CRUMPLED CONTORTED) (ACTION INJURED-GUARD-F)> 
+<DEFINE-ROUTINE INJURED-GUARD-F> 
+<DEFINE-ROUTINE INT-TIME> 
+<DEFINE-ROUTINE I-TOWER> 
+<GLOBAL GUARD-WAIT <>> 
+<DEFINE-ROUTINE I-CHARGE> 
+<DEFINE-ROUTINE I-CATCH> 
+<OBJECT BRACE (LOC LADDER-TOP) (DESC "brace") (SYNONYM BRACE) (ADJECTIVE METAL)
+(FLAGS NDESCBIT) (ACTION BRACE-F)> 
+<GLOBAL ON-BRACE? <>> 
+<DEFINE-ROUTINE BRACE-F> 
+<ROOM TWR-2 (LOC ROOMS) (NS 1) (EW 4) (GPOS 90) (PATH 0) (DESC "Center Tower")
+(UP PER LADDER-CLIMB) (SE PER GUARD-CATCH) (SW PER GUARD-CATCH) (NORTH PER
+GUARD-MOVE-BDR) (EAST PER GUARD-CATCH) (WEST PER GUARD-CATCH) (SOUTH PER
+GUARD-MOVE-INF) (NE PER GUARD-CATCH) (NW PER GUARD-CATCH) (GLOBAL LADDER TOWER
+BORDER-FENCE GUARDS) (FLAGS GVIEWBIT) (ACTION TWR-F)> 
+<DEFINE-ROUTINE TWR-F> 
+<OBJECT BINOCULARS (LOC INSIDE-SHED) (DESC "pair of binoculars") (SYNONYM PAIR
+BINOCULARS GLASSES BINOCS) (FDESC
+"Hanging from a hook near the door is a pair of binoculars.") (ADJECTIVE FIELD)
+(FLAGS TAKEBIT TRANSBIT) (SCENARIO 2) (ACTION BINOCULARS-F)> 
+<DEFINE-ROUTINE BINOCULARS-F> 
+<DEFINE-ROUTINE AT-NML?> 
+<OBJECT EXPLODING-PEN (DESC "pen") (SYNONYM PEN EXPLOSIVE) (ADJECTIVE EXPLODING
+) (FLAGS TAKEBIT OPENBIT CONTBIT SURFACEBIT) (SCENARIO 2) (ACTION
+EXPLODING-PEN-F)> 
+<CONSTANT SANITY-2
+"Your sanity is coming into question. Perhaps it is the blood loss."> 
+<DEFINE-ROUTINE EXPLODING-PEN-F> 
+<GLOBAL BOMB-DUD <>> 
+<DEFINE-ROUTINE I-FUSE> 
+<GLOBAL TOWER-DESTROYED <>> 
+<OBJECT FLAMING-CAR (DESC "burning car") (SYNONYM CAR AUTOMOBILE) (ADJECTIVE
+BURNING FLAMING) (ACTION FLAMING-CAR-F)> 
+<DEFINE-ROUTINE FLAMING-CAR-F> 
+<GLOBAL GUARDS-IN-CAR <>> 
+<DEFINE-ROUTINE DEMOLISH-CAR> 
+<DEFINE-ROUTINE CAR-IN-VIEW?> 
+<GLOBAL HUT-MAN-DIVERSION <>> 
+<DEFINE-ROUTINE I-MAN-BACK> 
+<DEFINE-ROUTINE BOMB-TELL> 
+<DEFINE-ROUTINE PEN-POOF> 
+<GLOBAL EXPLOSION-HEARD "You can hear an explosion in the distance."> 
+<GLOBAL FUSE-TIME 0> 
+<OBJECT PEN-CAP (LOC EXPLODING-PEN) (DESC "cap") (SYNONYM CAP COVER) (FLAGS
+TAKEBIT) (SCENARIO 2) (ACTION PEN-CAP-F)> 
+<DEFINE-ROUTINE PEN-CAP-F> 
+<GLOBAL FUSE-ARMED 0> 
+<OBJECT TIMER-BUTTON (DESC "timer button") (SYNONYM BUTTON) (ADJECTIVE TIMER
+RED) (FLAGS NDESCBIT) (ACTION TIMER-BUTTON-F)> 
+<DEFINE-ROUTINE TIMER-BUTTON-F> 
+<OBJECT LADDER (LOC LOCAL-GLOBALS) (DESC "ladder") (SYNONYM LADDER) (ADJECTIVE
+METAL) (ACTION LADDER-F)> 
+<DEFINE-ROUTINE LADDER-F> 
+<OBJECT POSTS (LOC TWR-2) (DESC "posts") (SYNONYM POSTS) (ADJECTIVE METAL STEEL
+) (FLAGS NDESCBIT) (ACTION POSTS-F)> 
+<DEFINE-ROUTINE POSTS-F> 
+<OBJECT NW-POST (LOC TWR-2) (DESC "northwest post") (SYNONYM POST) (ADJECTIVE
+NORTHWEST NW) (FLAGS NDESCBIT OPENBIT METALBIT) (ACTION POST-F)> 
+<OBJECT NE-POST (LOC TWR-2) (DESC "northeast post") (SYNONYM POST) (ADJECTIVE
+NORTHEAST NE) (FLAGS NDESCBIT OPENBIT METALBIT) (ACTION POST-F)> 
+<OBJECT SW-POST (LOC TWR-2) (DESC "southwest post") (SYNONYM POST) (ADJECTIVE
+SOUTHWEST SW) (FLAGS NDESCBIT OPENBIT METALBIT) (ACTION POST-F)> 
+<OBJECT SE-POST (LOC TWR-2) (DESC "southeast post") (SYNONYM POST) (ADJECTIVE
+SOUTHEAST SE) (FLAGS NDESCBIT OPENBIT METALBIT) (ACTION POST-F)> 
+<DEFINE-ROUTINE POST-F> 
+<OBJECT BORDER-FENCE (LOC LOCAL-GLOBALS) (DESC "border fence") (SYNONYM FENCE
+LINK LINKS) (ADJECTIVE CHAIN-LINK CHAIN BORDER IMPENETRABLE TALL) (GENERIC
+GENERIC-FENCE) (FLAGS METALBIT) (ACTION BORDER-FENCE-F)> 
+<DEFINE-ROUTINE BORDER-FENCE-F> 
+<ROOM BDR-2 (LOC ROOMS) (NS 1) (EW 4) (PATH 0) (GPOS 90) (DESC "Border") (SOUTH
+PER GUARD-MOVE-TWR) (EAST PER GUARD-CATCH) (WEST PER GUARD-CATCH) (NE PER
+GUARD-CATCH) (NW PER GUARD-CATCH) (SE PER GUARD-CATCH) (SW PER GUARD-CATCH) (
+NORTH SORRY "That appears to be the problem at hand.") (FLAGS GVIEWBIT) (GLOBAL
+BORDER-FENCE TOWER GUARDS) (ACTION BDR-F)> 
+<DEFINE-ROUTINE BDR-F> 
+<OBJECT TOWER (LOC LOCAL-GLOBALS) (DESC "tower") (SYNONYM TOWER TOWERS) (
+ADJECTIVE WATCH GUARD LEFT MIDDLE CENTER RIGHT) (ACTION TOWER-F)> 
+<DEFINE-ROUTINE TOWER-F> 
+<OBJECT FENCE (LOC LOCAL-GLOBALS) (DESC "first fence") (SYNONYM CHAIN-LINK LINK
+LINKS FENCE) (ADJECTIVE FIRST CHAIN ELECTRIFIED) (GENERIC GENERIC-FENCE) (FLAGS
+METALBIT OPENBIT) (ACTION FENCE-F)> 
+<DEFINE-ROUTINE GENERIC-FENCE> 
+<OBJECT FENCE-SIGN (LOC LOCAL-GLOBALS) (DESC "warning sign") (SYNONYM SIGN
+SIGNS NOTICE NOTICES) (ADJECTIVE WARNING) (FLAGS READBIT) (ACTION FENCE-SIGN-F)
+> 
+<DEFINE-ROUTINE FENCE-SIGN-F> 
+<DEFINE-ROUTINE SIGN-READER> 
+<DEFINE-ROUTINE FENCE-F> 
+<GLOBAL CUT-DETECTED <>> 
+<OBJECT RUBBER-GLOVES (DESC "pair of rubber gloves") (SYNONYM PAIR GLOVES) (
+ADJECTIVE RUBBER OLD) (FLAGS TAKEBIT WEARBIT) (SCENARIO 2)> 
+<ROOM B2 (EW 2) (NS 2) (LOC ROOMS) (DESC "Border Zone, Station") (PATH 0) (WEST
+TO A2 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track oriented north and south. Beyond the tracks, the
+ground rises steeply.") (EAST TO C2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (SE TO C3 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (SW TO A3 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track oriented north and south. Beyond the tracks, the
+ground rises steeply.") (SOUTH TO B3 IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (NORTH SORRY
+"Attempting a run directly at the border station would be tantamount to
+surrendering to the authorities and giving up on your mission.") (NE SORRY
+"Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (NW
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (FLAGS
+SLVIEWBIT) (GLOBAL SEARCHLIGHTS GUARDS TOWER FENCE FENCE-SIGN BORDER-FENCE
+BORDER-FIELD) (ACTION EDGE-ROOM-F)> 
+<DEFINE-ROUTINE EDGE-ROOM-F> 
+<ROOM C2 (EW 3) (NS 2) (LOC ROOMS) (DESC "Border Zone, Left") (PATH 0) (WEST TO
+B2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible. Directly across the border zone is
+the border crossing station.") (EAST TO D2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (SE TO D3 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (SW TO B3 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (SOUTH TO C3 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NORTH PER NOMANS-MOVE) (NE
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (NW
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (NOMAN
+<TABLE <TABLE 180 180 0 0> <TABLE 225 270 0 0> <TABLE 240 270 0 0> OUTF-1>) (
+FLAGS SLVIEWBIT) (GLOBAL SEARCHLIGHTS GUARDS TOWER FENCE FENCE-SIGN
+BORDER-FENCE BORDER-FIELD) (ACTION EDGE-ROOM-F)> 
+<ROOM D2 (EW 4) (NS 2) (LOC ROOMS) (DESC "Border Zone, Center") (PATH 0) (WEST
+TO C2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (EAST TO E2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (SE TO E3 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (SW TO C3 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (SOUTH TO D3 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NORTH PER NOMANS-MOVE) (NE
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (NW
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (NOMAN
+<TABLE <TABLE 135 90 0 0> <TABLE 180 180 0 0> <TABLE 225 270 0 0> OUTF-2>) (
+FLAGS SLVIEWBIT) (GLOBAL SEARCHLIGHTS GUARDS TOWER FENCE FENCE-SIGN
+BORDER-FENCE BORDER-FIELD) (ACTION EDGE-ROOM-F)> 
+<ROOM E2 (EW 5) (NS 2) (LOC ROOMS) (DESC "Border Zone, Right") (PATH 0) (WEST
+TO D2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (EAST SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SE TO F3
+IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SW TO D3 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SOUTH TO E3 IF HACK-FLAG
+ELSE "A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (NORTH PER NOMANS-MOVE)
+(NE SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (NW
+SORRY "Given the rate at which the searchlights are turning, it would be suicidal
+to attempt anything other than a direct run at the tower to the north.") (NOMAN
+<TABLE <TABLE 120 90 0 0> <TABLE 135 90 0 0> <TABLE 180 180 0 0> OUTF-3>) (
+FLAGS SLVIEWBIT) (GLOBAL SEARCHLIGHTS GUARDS TOWER FENCE FENCE-SIGN
+BORDER-FENCE BORDER-FIELD) (ACTION EDGE-ROOM-F)> 
+<OBJECT BORDER-FIELD (LOC LOCAL-GLOBALS) (DESC "open field") (SYNONYM FIELD
+LAND) (ADJECTIVE OPEN NOMANS NO-MANS) (FLAGS VOWELBIT AN) (ACTION
+BORDER-FIELD-F)> 
+<DEFINE-ROUTINE BORDER-FIELD-F> 
+<ROOM A2 (EW 1) (NS 2) (LOC ROOMS) (DESC "Border Zone, Tracks") (PATH A3) (WEST
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (EAST
+TO B2 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest,
+until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (SE TO B3 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH TO
+A3 IF HACK-FLAG ELSE "You continue along the tracks for about a hundred yards."
+) (NORTH SORRY "You'd do as well to surrender.") (NE SORRY
+"You'd do as well to surrender.") (NW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (GLOBAL
+SEARCHLIGHTS) (FLAGS TRACKSBIT) (ACTION TRACKS-ROOM-F)> 
+<OBJECT TRACKS (LOC GLOBAL-OBJECTS) (DESC "tracks") (SCENARIO 2) (SYNONYM
+TRACKS) (ADJECTIVE RAILROAD) (ACTION TRACKS-F)> 
+<DEFINE-ROUTINE TRACKS-F> 
+<OBJECT ROAD (LOC GLOBAL-OBJECTS) (DESC "road") (SYNONYM ROAD ROADWAY PAVEMENT)
+(ACTION ROAD-F)> 
+<DEFINE-ROUTINE ROAD-F> 
+<DEFINE-ROUTINE TRACKS-ROOM-F> 
+<GLOBAL FIRST-B8-FLAG T> 
+<ROOM A3 (EW 1) (NS 3) (LOC ROOMS) (DESC "Railroad Tracks") (PATH A4) (WEST
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (EAST
+TO B3 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SE TO B4 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH TO
+A4 IF HACK-FLAG ELSE "You continue along the tracks for about a hundred yards."
+) (NORTH TO A2 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (NE TO B2 IF
+HACK-FLAG ELSE "You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible. Directly across the border zone is
+the border crossing station.") (NW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (FLAGS
+TRACKSBIT) (ACTION TRACKS-ROOM-F)> 
+<ROOM A4 (EW 1) (NS 4) (LOC ROOMS) (DESC "Railroad Tracks") (PATH A5) (WEST
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (EAST
+TO B4 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SE TO B5 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH TO
+A5 IF HACK-FLAG ELSE "You continue along the tracks for about a hundred yards."
+) (NORTH TO A3 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (NE TO B3 IF
+HACK-FLAG ELSE "You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (NW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (FLAGS
+TRACKSBIT) (ACTION TRACKS-ROOM-F)> 
+<ROOM A5 (EW 1) (NS 5) (LOC ROOMS) (DESC "Railroad Tracks") (PATH A6) (WEST
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (EAST
+TO B5 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SE TO B6 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH TO
+A6 IF HACK-FLAG ELSE "You continue along the tracks for about a hundred yards."
+) (NORTH TO A4 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (NE TO B4 IF
+HACK-FLAG ELSE "You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (NW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (FLAGS
+TRACKSBIT) (ACTION TRACKS-ROOM-F)> 
+<ROOM A6 (EW 1) (NS 6) (LOC ROOMS) (DESC "Railroad Tracks") (PATH A7) (WEST
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (EAST
+TO B6 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SE TO B7 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH TO
+A7 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards, reaching a spot
+at which the tracks bend off to the southeast.") (NORTH TO A5 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (NE TO B5 IF
+HACK-FLAG ELSE "You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (NW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (FLAGS
+TRACKSBIT) (ACTION TRACKS-ROOM-F)> 
+<ROOM A7 (EW 1) (NS 7) (LOC ROOMS) (DESC "Railroad Tracks") (PATH B8) (WEST
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (EAST
+TO B7 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SE TO B8 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (
+NORTH TO A6 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (NE TO B6 IF
+HACK-FLAG ELSE "You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (NW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (FLAGS
+TRACKSBIT) (ACTION TRACKS-ROOM-F)> 
+<ROOM B3 (EW 2) (NS 3) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+A3 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track oriented north and south. Beyond the tracks, the
+ground rises steeply.") (EAST TO C3 IF TRUE-FLAG ELSE
+"You move deeper into the forest, until you reach...") (SE TO OUTSIDE-SHED IF
+HACK-FLAG ELSE "A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest, until you stop at
+a small wooden shed.") (SW TO A4 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (SOUTH TO B4 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (NORTH TO B2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible. Directly across the border zone is
+the border crossing station.") (NE TO C2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (NW TO A2 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (ACTION FOREST-ROOM-F)> 
+<DEFINE-ROUTINE FOREST-ROOM-F> 
+<ROOM B4 (EW 2) (NS 4) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+A4 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track oriented north and south. Beyond the tracks, the
+ground rises steeply.") (EAST TO OUTSIDE-SHED IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest, until
+you reach a small wooden shed.") (SE TO C5 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (SW TO A5 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (SOUTH TO B5 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NORTH TO B3 IF HACK-FLAG
+ELSE "You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NE TO C3 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (NW TO A3 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (ACTION FOREST-ROOM-F)> 
+<ROOM B5 (EW 2) (NS 5) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+A5 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track oriented north and south. Beyond the tracks, the
+ground rises steeply.") (EAST TO C5 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (SE TO C6 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (SW TO A6 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (SOUTH TO B6 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (NORTH TO B4 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (NE TO OUTSIDE-SHED IF HACK-FLAG
+ELSE "A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest, until you stop at
+a small wooden shed.") (NW TO A4 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (ACTION FOREST-ROOM-F)> 
+<ROOM B6 (EW 2) (NS 6) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+A6 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track oriented north and south. Beyond the tracks, the
+ground rises steeply.") (EAST TO C6 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (SE TO C7 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SW TO A7 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the rises steeply.") (SOUTH TO
+B7 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NORTH TO B5 IF HACK-FLAG
+ELSE "You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (NE TO C5 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest.") (NW TO A5 IF
+HACK-FLAG ELSE "You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (ACTION FOREST-ROOM-F)> 
+<ROOM B7 (EW 2) (NS 7) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+A7 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track oriented north and south. Beyond the tracks, the
+ground rises steeply.") (EAST TO C7 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SE TO C8 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SW SORRY
+"You'd never make it up the cliff on the other side of the tracks.") (SOUTH TO
+B8 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+northwest to southeast. Behind the tracks, to the west and south, the
+ground rises steeply.") (NORTH TO B6 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (NE TO C6 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (NW TO A6 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+more-or-less north and south. Behind the tracks, the ground rises
+steeply.") (ACTION FOREST-ROOM-F)> 
+<ROOM B8 (EW 2) (NS 8) (LOC ROOMS) (DESC "Railroad Tracks") (PATH 0) (WEST
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (EAST
+TO C8 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (SE TO C9 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards, and come to
+a place where the tracks are met by a roadway, heading off to the northeast.
+Both the tracks and the roadway enter a tunnel to the south.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH
+SORRY "You scramble up a bit, but slide back down. It's just too steep.") (
+NORTH TO B7 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (NE TO C7 IF HACK-FLAG ELSE
+"You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (NW TO A7 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (FLAGS TRACKSBIT) (
+ACTION TRACKS-ROOM-F)> 
+<ROOM C3 (EW 3) (NS 3) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+B3 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (EAST TO D3 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (SE TO D4 IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (SW TO B4 IF HACK-FLAG
+ELSE "You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (SOUTH TO OUTSIDE-SHED IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest, until
+you come to a small wooden shed.") (NORTH TO C2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (NE TO D2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (NW TO B2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible. Directly across the border zone is
+the border crossing station.") (ACTION FOREST-ROOM-F)> 
+<DEFINE-ROUTINE SHED-MOVE> 
+<ROOM OUTSIDE-SHED (EW 3) (NS 4) (LOC ROOMS) (DESC "Outside Shed") (PATH 0) (IN
+PER SHED-MOVE) (SE TO D5 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest and into a clearing. A small hut lies off the east, and
+from the smoke from the chimney, it appears as though somebody's home.") (NE TO
+D3 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (NORTH TO C3 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (NW TO B3 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest.") (SOUTH TO C5 IF
+HACK-FLAG ELSE "A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (SW TO B5 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (EAST TO D4 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (WEST TO B4 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (GLOBAL SHED-DOOR SHED-WINDOW SHED
+) (ACTION OUTSIDE-SHED-F) (WOODFCN OUTSIDE-SHED-WF)> 
+<DEFINE-ROUTINE OUTSIDE-SHED-WF> 
+<DEFINE-ROUTINE BOLDTELL> 
+<DEFINE-ROUTINE OUTSIDE-SHED-F> 
+<OBJECT SHED-DOOR (LOC LOCAL-GLOBALS) (DESC "shed door") (SYNONYM DOOR) (
+ADJECTIVE SHED) (FLAGS DOORBIT)> 
+<OBJECT WOOD-PILE (LOC INSIDE-SHED) (DESC "pile of wood") (SYNONYM PILE WOOD
+LOGS LOG) (ADJECTIVE WOOD) (FLAGS NDESCBIT) (ACTION WOOD-PILE-F)> 
+<DEFINE-ROUTINE WOOD-PILE-F> 
+<OBJECT FAKE-GLOVES (LOC INSIDE-SHED) (DESC "gloves") (SYNONYM GLOVES) (
+ADJECTIVE RUBBER) (FLAGS NDESCBIT) (ACTION FAKE-TOOLS-F)> 
+<OBJECT FAKE-HAMMER (LOC INSIDE-SHED) (DESC "hammer") (SYNONYM HAMMER) (
+ADJECTIVE WOOD) (FLAGS NDESCBIT) (ACTION FAKE-TOOLS-F)> 
+<OBJECT FAKE-SAW (LOC INSIDE-SHED) (DESC "saw") (SYNONYM WOOD-SAW SAW) (
+ADJECTIVE WOOD) (FLAGS NDESCBIT) (ACTION FAKE-TOOLS-F)> 
+<OBJECT FAKE-CUTTERS (LOC INSIDE-SHED) (DESC "bolt cutters") (SYNONYM CUTTER
+BOLT-CUTTER CUTTERS) (ADJECTIVE BOLT) (FLAGS NDESCBIT) (ACTION FAKE-TOOLS-F)> 
+<DEFINE-ROUTINE FAKE-TOOLS-F> 
+<OBJECT ASSORTED-TOOLS (LOC INSIDE-SHED) (DESC "assorted tools") (SYNONYM TOOLS
+TOOL) (ADJECTIVE ASSORTED) (FLAGS NDESCBIT) (ACTION ASSORTED-TOOLS-F)> 
+<DEFINE-ROUTINE ASSORTED-TOOLS-F> 
+<OBJECT HAMMER (DESC "hammer") (SYNONYM HAMMER TOOL TOOLS HANDLE) (FLAGS
+TAKEBIT TOOLBIT) (SIZE 10) (SCENARIO 2) (ACTION HAMMER-F)> 
+<DEFINE-ROUTINE HAMMER-F> 
+<OBJECT WOOD-SAW (DESC "wood saw") (SYNONYM SAW TOOL TOOLS) (ADJECTIVE WOOD) (
+FLAGS TAKEBIT TOOLBIT) (SCENARIO 2) (SIZE 20) (ACTION WOOD-SAW-F)> 
+<DEFINE-ROUTINE WOOD-SAW-F> 
+<OBJECT BOLT-CUTTER (DESC "bolt-cutter") (SYNONYM CUTTER BOLT-CUTTER CUTTERS
+TOOL TOOLS) (ADJECTIVE BOLT) (FLAGS TAKEBIT TOOLBIT) (SIZE 20) (SCENARIO 2)> 
+<OBJECT SHED-WINDOW (LOC LOCAL-GLOBALS) (DESC "shed window") (SYNONYM WINDOW) (
+ADJECTIVE SHED) (ACTION SHED-WINDOW-F)> 
+<DEFINE-ROUTINE SHED-WINDOW-F> 
+<ROOM INSIDE-SHED (EW 3) (NS 4) (LOC ROOMS) (DESC "Inside Shed") (PATH 0) (OUT
+PER LEAVE-SHED) (GLOBAL SHED-DOOR SHED-WINDOW SHED) (ACTION INSIDE-SHED-F) (
+WOODFCN INSIDE-SHED-WF)> 
+<DEFINE-ROUTINE LEAVE-SHED> 
+<OBJECT SHED (LOC LOCAL-GLOBALS) (DESC "shed") (SYNONYM SHED WOODSHED BUILDING
+HUT) (ADJECTIVE WOOD) (ACTION SHED-F)> 
+<DEFINE-ROUTINE SHED-F> 
+<GLOBAL WOOD-RETURNING <>> 
+<DEFINE-ROUTINE INSIDE-SHED-WF> 
+<DEFINE-ROUTINE INSIDE-SHED-F> 
+<ROOM C5 (EW 3) (NS 5) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+B5 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (EAST TO D5 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest and into a clearing. A small hut lies off the east, and
+from the smoke from the chimney, it appears as though somebody's home.") (SE TO
+D6 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+south to east, with a narrow spur leading north.") (SW TO B6 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (SOUTH TO C6 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NORTH TO OUTSIDE-SHED IF
+HACK-FLAG ELSE "A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest, until
+you come to a small wooden shed.") (NE TO D4 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (NW TO B4 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (ACTION FOREST-ROOM-F)> 
+<ROOM C6 (EW 3) (NS 6) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+B6 IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (EAST TO D6 IF HACK-FLAG
+ELSE "You emerge from the thick forest and come to a roadway running from
+south to east, with a narrow spur leading north.") (SE TO D7 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+north to south.") (SW TO B7 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (SOUTH TO C7 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (NORTH TO C5 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (NE TO D5 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest and into a clearing. A small hut lies off the east, and
+from the smoke from the chimney, it appears as though somebody's home.") (NW TO
+B5 IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (ACTION FOREST-ROOM-F)> 
+<ROOM C7 (EW 3) (NS 7) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+B7 IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (EAST TO D7 IF HACK-FLAG
+ELSE "You emerge from the thick forest and come to a roadway running from
+north to south.") (SE TO D8 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+north to southwest.") (SW TO B8 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+northwest to southeast. Behind the tracks, to the west and south, the
+ground rises steeply.") (SOUTH TO C8 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest.") (NORTH TO C6 IF
+HACK-FLAG ELSE "A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (NE TO D6 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+south to east, with a narrow spur leading north.") (NW TO B6 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (ACTION FOREST-ROOM-F)> 
+<ROOM C8 (EW 3) (NS 8) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+B8 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+northwest to southeast. Behind the tracks, to the west and south, the
+ground rises steeply.") (EAST TO D8 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+north to southwest.") (SE TO D9 IF HACK-FLAG ELSE
+"You cross a roadway and come to the edge of a putrid swamp, which
+runs off to the northeast.") (SW TO B8 IF HACK-FLAG ELSE
+"You leave the forest and come to some railroad tracks, running
+northwest to southeast. Behind the tracks, to the west and south, the
+ground rises steeply.") (SOUTH TO C9 IF HACK-FLAG ELSE
+"You emerge from the forest into an open area through which runs
+a railroad track running to the northwest and a roadway running to the
+northeast. Both lead south into a tunnel.") (NORTH TO C7 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (NE TO D7 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+north to south.") (NW TO B7 IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (ACTION FOREST-ROOM-F)> 
+<ROOM C9 (EW 3) (NS 9) (LOC ROOMS) (DESC "Mouth of Tunnel") (LDESC
+"Both the road and the railroad tracks lead into a dark tunnel to the south.
+If your memory from the train serves, this tunnel is miles long, and without
+interruption. The tracks continue toward the border to the northwest, and
+the road bends to the northeast. A dark forest stretches before you to the
+north.") (PATH 0) (WEST SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (EAST TO D9
+IF FALSE-FLAG ELSE
+"You continue through the forest, coming finally to the edge of a putrid
+swamp, which winds its way off to the northeast.") (SE TO D9 IF FALSE-FLAG ELSE
+"You continue through the forest, coming finally to the edge of a putrid
+swamp, which winds its way off to the northeast.") (SW SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (SOUTH
+SORRY "It would take hours to get through the tunnel, and your mission would
+undoubtably fail. You'd best find a way across the border.") (NORTH TO C8 IF
+HACK-FLAG ELSE "You leave the side of the railroad tracks and head into the forest.
+The darkness is deeper here, as less moonlight reaches the forest floor.
+The snow crunches under your feet, and you pause after moving a hundred or
+so yards into the forest.") (NE TO D8) (NW TO B8 IF HACK-FLAG ELSE
+"You continue along the tracks for about a hundred yards.") (FLAGS TRACKSBIT
+ROADBIT)> 
+<ROOM D3 (EW 4) (NS 3) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+C3 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest.") (EAST TO E3 IF
+HACK-FLAG ELSE "A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest.") (SE TO E4 IF HACK-FLAG
+ELSE "The blowing snow blinds you for a moment as you walk through the
+forest.") (SW TO OUTSIDE-SHED IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest, until you stop at
+a small wooden shed.") (SOUTH TO D4 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest.") (NORTH TO D2 IF
+HACK-FLAG ELSE "You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (NE TO E2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (NW TO C2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (ACTION FOREST-ROOM-F)> 
+<ROOM D4 (EW 4) (NS 4) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+OUTSIDE-SHED IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest, until
+you come to a small wooden shed.") (EAST TO E4 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SE TO E5 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SW TO C5 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SOUTH TO NORTH-HUT IF
+HACK-FLAG ELSE "You walk for a short while and come to a large clearing, to the east of
+which lies a small hut. Concerned about the possibility of being seen,
+you head toward a spot on the north side of the hut, where you can
+check the situation out.") (NORTH TO D3 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (NE TO E3 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (NW TO C3 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (ACTION FOREST-ROOM-F)> 
+<ROOM D5 (EW 4) (NS 5) (FLAGS VILLAGEBIT) (LOC ROOMS) (DESC "Clearing") (PATH 0
+) (WEST TO C5 IF HACK-FLAG ELSE
+"You enter the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (EAST TO OUTSIDE-HUT IF
+HACK-FLAG ELSE "A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you walk to the front door of the hut.") (SE TO SOUTH-HUT
+IF HACK-FLAG ELSE "You walk around to the south side of the hut.") (SW TO C6 IF
+HACK-FLAG ELSE "The blowing snow blinds you for a moment as you enter the
+forest.") (SOUTH TO ROAD-END IF HACK-FLAG ELSE
+"You continue until you come to the start of a roadway leading south.") (NORTH
+TO D4 IF HACK-FLAG ELSE
+"You enter the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NE TO NORTH-HUT IF
+HACK-FLAG ELSE "A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on to the north side of the hut.") (NW TO
+OUTSIDE-SHED IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed into the forest, stopping as you come upon a
+small wooden shed.") (ACTION D5-F) (WOODFCN D5-WF) (GLOBAL HUT CHIMNEY) (FIRE
+"You continue along until you enter a clearing; to the east, before you,
+lies a burning hut, sending plumes of black smoke and orange flame into
+the sky.")> 
+<GLOBAL HUT-BURNING <>> 
+<DEFINE-ROUTINE D5-F> 
+<OBJECT HUT (LOC LOCAL-GLOBALS) (DESC "hut") (SYNONYM HUT HOUSE HOME BUILDING)
+(ADJECTIVE WOODEN WOOD) (ACTION HUT-F)> 
+<OBJECT CHIMNEY (LOC LOCAL-GLOBALS) (DESC "chimney") (SYNONYM CHIMNEY) (ACTION
+CHIMNEY-F)> 
+<DEFINE-ROUTINE CHIMNEY-F> 
+<DEFINE-ROUTINE HUT-F> 
+<GLOBAL HUT-WALKS <PLTABLE OUTSIDE-HUT NORTH-HUT BEHIND-HUT SOUTH-HUT
+OUTSIDE-HUT 0>> 
+<DEFINE-ROUTINE LKP> 
+<DEFINE-ROUTINE D5-WF> 
+<ROOM OUTSIDE-HUT (EW 4) (NS 5) (FLAGS VILLAGEBIT OUTHUTBIT) (PATH 0) (LOC
+ROOMS) (DESC "Outside Hut") (NORTH TO NORTH-HUT IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed to the north side of the house.") (SOUTH TO ROAD-END
+IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed to a point at which a road leading south
+through the forest begins.") (NW TO D5 IF HACK-FLAG ELSE
+"You enter the forest, breaking branches as you go, and
+finally stop as you come into a clearing, to the east of which is a small
+hut.") (SW TO ROAD-END IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed to a point at which a road leading south
+through the forest begins.") (NE TO NORTH-HUT IF HACK-FLAG ELSE
+"You walk around to the north side of the hut.") (SE TO SOUTH-HUT IF HACK-FLAG
+ELSE "A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on to the south side of the hut.") (EAST TO
+HUT-LIVING IF HUT-FRONT-DOOR IS OPEN) (WEST TO D5 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk into the clearing.") (
+ACTION OUTSIDE-HUT-F) (WOODFCN OUTSIDE-HUT-WF) (GLOBAL HUT CHIMNEY
+HUT-FRONT-DOOR) (FIRE
+"You continue until reaching the front of the blazing hut. The heat is so
+extreme that you can't get within twenty feet of it.")> 
+<DEFINE-ROUTINE OUTSIDE-HUT-F> 
+<DEFINE-ROUTINE OUTSIDE-HUT-WF> 
+<ROOM NORTH-HUT (EW 4) (NS 5) (FLAGS VILLAGEBIT OUTHUTBIT) (PATH 0) (LOC ROOMS)
+(DESC "North Side of Hut") (NE TO E4 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SE TO BEHIND-HUT IF
+HACK-FLAG ELSE "You walk around the house to the back; a door here leads into the hut."
+) (EAST TO BEHIND-HUT IF HACK-FLAG ELSE
+"You walk around the house to the back; a door here leads into the hut.") (WEST
+TO D5 IF HACK-FLAG ELSE "You walk around the house and into the clearing.") (NW
+TO D4 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest.") (SW TO OUTSIDE-HUT
+IF HACK-FLAG ELSE "You walk around to the front of the house.") (NORTH TO D4 IF
+HACK-FLAG ELSE "A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (SOUTH SORRY
+"There's no way into the hut from here.") (ACROSS HUT-LIVING) (ACTION
+NORTH-HUT-F) (GLOBAL HUT-WINDOW HUT CHIMNEY) (FIRE
+"You continue until reaching the north side of a blazing
+hut. With the extreme heat here, you can't get close at all.")> 
+<DEFINE-ROUTINE NORTH-HUT-F> 
+<DEFINE-ROUTINE CAR-SEQ-TELL> 
+<OBJECT HUT-WINDOW (LOC LOCAL-GLOBALS) (DESC "window") (SYNONYM WINDOW) (ACTION
+HUT-WINDOW-F)> 
+<DEFINE-ROUTINE HUT-WINDOW-F> 
+<ROOM SOUTH-HUT (EW 4) (NS 5) (FLAGS VILLAGEBIT OUTHUTBIT) (PATH 0) (LOC ROOMS)
+(DESC "South Side of Hut") (NE TO BEHIND-HUT IF HACK-FLAG ELSE
+"You walk around the house to the back; the door is closed.") (SE TO E6 IF
+HACK-FLAG ELSE "You reenter the forest and soon come to a roadway running from
+east to west.") (EAST TO BEHIND-HUT IF HACK-FLAG ELSE
+"You walk around the house to the back; the door is closed.") (WEST TO D5 IF
+HACK-FLAG ELSE "You walk around the house and into the clearing.") (SW TO
+ROAD-END IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and move to a point in the forest at which a small
+road leads south.") (NW TO OUTSIDE-HUT IF HACK-FLAG ELSE
+"You walk around to the front of the house.") (NORTH SORRY
+"There's no way into the hut from here.") (SOUTH TO ROAD-END IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and move to a point in the forest at which a small
+road leads south.") (ACTION SOUTH-HUT-F) (GLOBAL HUT-WINDOW HUT CHIMNEY) (FIRE
+"You reach the south side of a hut, now completely ablaze. The heat from
+the flames makes it impossible to go any closer.")> 
+<DEFINE-ROUTINE SOUTH-HUT-F> 
+<ROOM BEHIND-HUT (EW 4) (NS 5) (FLAGS VILLAGEBIT OUTHUTBIT) (PATH 0) (LOC ROOMS
+) (DESC "Behind Hut") (NW TO NORTH-HUT IF HACK-FLAG ELSE
+"You walk around to the north side of the house.") (WEST TO HUT-STORAGE IF
+HUT-BACK-DOOR IS OPEN) (IN-DIR P?WEST) (SW TO SOUTH-HUT IF HACK-FLAG ELSE
+"You walk around to the south side of the house.") (SOUTH TO SOUTH-HUT IF
+HACK-FLAG ELSE "You walk around to the south side of the house.") (SE TO E6 IF
+HACK-FLAG ELSE "You enter the forest, but soon emerge at a roadway running from
+east to west.") (EAST TO E5 IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on into the forest.") (NE TO E4 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue into the forest.") (NORTH TO NORTH-HUT IF
+HACK-FLAG ELSE "You walk around to the north side of the hut.") (GLOBAL
+HUT-BACK-DOOR HUT-WINDOW HUT CHIMNEY) (ACTION BEHIND-HUT-F) (FIRE
+"You continue until you reach the back side of a blazing hut.
+Engulfed as it is in flames, you cannot possibly get closer.")> 
+<DEFINE-ROUTINE BEHIND-HUT-F> 
+<OBJECT HUT-BACK-DOOR (LOC LOCAL-GLOBALS) (DESC "back door") (SYNONYM DOOR
+HINGES HINGE) (ADJECTIVE BACK) (FLAGS DOORBIT) (ACTION HUT-BACK-DOOR-F)> 
+<GLOBAL DOOR-OILED <>> 
+<DEFINE-ROUTINE HUT-BACK-DOOR-F> 
+<OBJECT HUT-MAN (LOC HUT-LIVING) (DESC "man") (SYNONYM MAN)> 
+<OBJECT HUT-FRONT-DOOR (LOC LOCAL-GLOBALS) (DESC "front door") (SYNONYM DOOR) (
+ADJECTIVE FRONT) (FLAGS DOORBIT) (ACTION HUT-FRONT-DOOR-F)> 
+<DEFINE-ROUTINE MAN-AT-HOME?> 
+<DEFINE-ROUTINE HUT-FRONT-DOOR-F> 
+<DEFINE-ROUTINE HUT-STORAGE-EXIT> 
+<ROOM HUT-STORAGE (EW 4) (NS 5) (FLAGS VILLAGEBIT HUTBIT) (PATH 0) (LOC ROOMS)
+(DESC "Storage Area") (EAST PER HUT-STORAGE-EXIT) (WEST TO HUT-LIVING) (OUT PER
+HUT-STORAGE-EXIT) (ACTION HUT-STORAGE-F) (WOODFCN HUT-STORAGE-WF) (GLOBAL
+HUT-WINDOW HUT CHIMNEY HUT-BACK-DOOR)> 
+<GLOBAL HUT-STORE-FLAG T> 
+<DEFINE-ROUTINE HUT-STORAGE-WF> 
+<DEFINE-ROUTINE HUT-STORAGE-F> 
+<DEFINE-ROUTINE DOOR-TELL> 
+<OBJECT HUT-WOOD (LOC HUT-LIVING) (DESC "wood pile") (SYNONYM PILE WOOD) (
+ADJECTIVE WOOD) (FLAGS NDESCBIT) (ACTION HUT-WOOD-F)> 
+<GLOBAL HUT-WOOD-ADDED <>> 
+<DEFINE-ROUTINE HUT-WOOD-F> 
+<ROOM HUT-LIVING (EW 4) (NS 5) (FLAGS VILLAGEBIT HUTBIT) (PATH 0) (LOC ROOMS) (
+DESC "Living Room") (WEST TO OUTSIDE-HUT IF HUT-FRONT-DOOR IS OPEN) (EAST TO
+HUT-STORAGE) (SOUTH TO HUT-BEDROOM) (OUT TO OUTSIDE-HUT IF HUT-FRONT-DOOR IS
+OPEN) (ACTION HUT-LIVING-F) (GLOBAL HUT-WINDOW HUT HUT-FRONT-DOOR) (WOODFCN
+HUT-LIVING-WF)> 
+<DEFINE-ROUTINE TAKEABLE?> 
+<OBJECT GLOBAL-HUT-MAN (LOC GLOBAL-OBJECTS) (DESC "hut owner") (SYNONYM OWNER
+MAN) (ADJECTIVE HUT) (SCENARIO 2) (ACTION GLOBAL-HUT-MAN-F)> 
+<DEFINE-ROUTINE GLOBAL-HUT-MAN-F> 
+<DEFINE-ROUTINE HUT-MAN-DESC> 
+<DEFINE-ROUTINE HUT-LIVING-WF> 
+<DEFINE-ROUTINE OWNER-NOTICES?> 
+<DEFINE-ROUTINE MAN-TO-LIVING-ROOM> 
+<DEFINE-ROUTINE MAN-CATCHES> 
+<CONSTANT HAVE-A-SEAT
+" reaches for a gun which he carries
+under his belt. \"Have a seat,\" he advises, as he calls for the
+authorities on his radio telephone. All you can do is wait until they
+arrive."> 
+<DEFINE-ROUTINE HUT-LIVING-F> 
+<OBJECT HUT-MAP (LOC HUT-LIVING) (SYNONYM MAP DIAGRAM) (DESC "map") (FLAGS
+READBIT NDESCBIT) (ACTION HUT-MAP-F)> 
+<DEFINE-ROUTINE HUT-MAP-F> 
+<OBJECT MISC-LIVING (LOC HUT-LIVING) (DESC "living room item") (SYNONYM COUCH
+TABLE CHAIR CHAIRS BULB LIGHTBULB STOVE WOODSTOVE) (ADJECTIVE WOOD LIGHT) (
+FLAGS NDESCBIT) (ACTION MISC-LIVING-F)> 
+<DEFINE-ROUTINE MISC-LIVING-F> 
+<OBJECT NORMAL-SHOES (DESC "pair of everyday black shoes") (SYNONYM PAIR SHOES)
+(ADJECTIVE EVERYDAY BLACK) (FLAGS WEARBIT TAKEBIT WORNBIT) (SCENARIO 2) (
+GENERIC GENERIC-SHOES) (ACTION SHOES-F) (SPEED 50)> 
+<GLOBAL SHOES-WORN 0> 
+<OBJECT PARKA (LOC HUT-STORAGE) (DESC "white down parka") (SYNONYM PARKA COAT
+OVERCOAT) (ADJECTIVE WHITE DOWN) (FLAGS WEARBIT TAKEBIT) (SCENARIO 2)> 
+<OBJECT OIL-CAN (LOC HUT-STORAGE) (DESC "can of household oil") (SYNONYM CAN
+OIL) (ADJECTIVE HOUSEHOLD OIL) (FLAGS TAKEBIT) (SCENARIO 2) (ACTION OIL-CAN-F)>
+
+<DEFINE-ROUTINE OIL-CAN-F> 
+<OBJECT WORK-SHOES (LOC HUT-STORAGE) (DESC "pair of work shoes") (SYNONYM PAIR
+SHOES WORKSHOES) (ADJECTIVE WORK HEAVY) (FLAGS WEARBIT TAKEBIT) (SCENARIO 2) (
+ACTION SHOES-F) (GENERIC GENERIC-SHOES) (SPEED 30) (SIZE 15)> 
+<DEFINE-ROUTINE GENERIC-SHOES> 
+<OBJECT BOOTS (LOC HUT-STORAGE) (DESC "pair of knee-boots") (SYNONYM PAIR BOOTS
+KNEE-BOOTS) (ADJECTIVE KNEE) (FLAGS WEARBIT TAKEBIT) (SCENARIO 2) (ACTION
+SHOES-F) (SPEED 40) (SIZE 10)> 
+<OBJECT KNAPSACK (LOC HUT-STORAGE) (DESC "knapsack") (SYNONYM KNAPSACK SACK
+PACK) (ADJECTIVE LARGE) (FLAGS TAKEBIT WEARBIT CONTBIT OPENBIT SEARCHBIT) (
+SCENARIO 2) (CAPACITY 60) (ACTION KNAPSACK-F)> 
+<DEFINE-ROUTINE KNAPSACK-F> 
+<DEFINE-ROUTINE SHOES-F> 
+<ROOM HUT-BEDROOM (EW 4) (NS 5) (FLAGS VILLAGEBIT HUTBIT) (PATH 0) (LOC ROOMS)
+(DESC "Bedroom") (LDESC
+"The bedroom is a shambles, consisting in all of a bed and a chair, over which
+are draped assorted clothes too numerous and jumbled to mention. A small 
+window looks south to a snowy landscape.") (NORTH TO HUT-LIVING) (OUT TO
+HUT-LIVING) (GLOBAL HUT-WINDOW HUT)> 
+<OBJECT MISC-CLOTHING (LOC HUT-BEDROOM) (DESC "jumbled clothing") (SYNONYM
+CLOTHES CLOTHING) (ADJECTIVE JUMBLED ASSORTED) (FLAGS NDESCBIT) (ACTION
+MISC-CLOTHING-F)> 
+<DEFINE-ROUTINE MISC-CLOTHING-F> 
+<OBJECT MISC-FURNITURE (LOC HUT-BEDROOM) (DESC "furniture") (SYNONYM BED CHAIR)
+(FLAGS NDESCBIT) (ACTION MISC-FURNITURE-F)> 
+<DEFINE-ROUTINE MISC-FURNITURE-F> 
+<ROOM ROAD-END (EW 4) (NS 5) (FLAGS VILLAGEBIT) (PATH 0) (LOC ROOMS) (DESC
+"End of the Road") (NORTH TO SOUTH-HUT IF HACK-FLAG ELSE
+"The clearing before you is large and open, and you are concerned about being
+so exposed. Seeing the hut off to the east, you decide to play it safe by
+taking a position just to its south, where you can better gauge the
+situation.") (SOUTH TO D6 IF HACK-FLAG ELSE
+"You continue down the road and come to the junction of a larger road
+running from south to east.") (EAST TO E5 IF FALSE-FLAG ELSE
+"You leave the side of the roadway, bear off slightly to the north to
+avoid a thicket, and reenter the forest. A cold gust of wind chills you
+to the bone.") (WEST TO C5 IF FALSE-FLAG ELSE
+"You leave the side of the roadway and reenter the forest. A cold gust
+of wind chills you to the bone.") (NE TO SOUTH-HUT IF FALSE-FLAG ELSE
+"You walk around to the south side of the hut.") (NW TO C5 IF FALSE-FLAG ELSE
+"You leave the side of the roadway and reenter the forest.") (SE TO E6 IF
+FALSE-FLAG ELSE "You leave the roadway, and reenter the forest. After a few dozen yards,
+you come to a roadway running east and west.") (SW TO C6 IF FALSE-FLAG ELSE
+"You leave the side of the roadway and reenter the forest.") (GLOBAL HUT
+CHIMNEY) (ACTION ROAD-END-F)> 
+<DEFINE-ROUTINE ROAD-END-F> 
+<ROOM D6 (EW 4) (NS 6) (LOC ROOMS) (DESC "Road Spur") (PATH 0) (WEST TO C6 IF
+HACK-FLAG ELSE "You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (EAST TO E6 IF HACK-FLAG ELSE
+"You continue along the roadway for about a hundred yards, to a point
+where it bends to the northeast.") (SE TO E7 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which runs from northeast to south. Putrid sulphurous vapors
+fill your lungs as you step to the edge of the noisome waters.") (SW TO C7 IF
+HACK-FLAG ELSE "You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (SOUTH TO D7 IF HACK-FLAG ELSE
+"You continue along the roadway for about a hundred yards.") (NORTH TO ROAD-END
+IF HACK-FLAG ELSE
+"You walk onto the spur leading north, and continue until the road ends
+just south of a clearing.") (NE TO E5 IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (NW TO C5 IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (FLAGS FORESTBIT ROADBIT) (ACTION ROAD-ROOM-F)
+> 
+<DEFINE-ROUTINE ROAD-ROOM-F> 
+<ROOM D7 (EW 4) (NS 7) (LOC ROOMS) (DESC "On the Roadway") (PATH 0) (WEST TO C7
+IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (EAST TO E7 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which runs from northeast to south. Putrid sulphurous vapors
+fill your lungs as you step to the edge of the noisome waters.") (SE TO E8 IF
+HACK-FLAG ELSE "You leave the roadway and come to the edge of a dank area at the edge
+of a swamp. Putrid sulphurous vapors fill your lungs as you step to
+the edge of the noisome waters. The swamp's edge continues to the
+north and southwest.") (SW TO C8 IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (SOUTH TO D8 IF HACK-FLAG ELSE
+"You continue along the roadway for about a hundred yards; the road
+continues along here to the southwest.") (NORTH TO D6 IF HACK-FLAG ELSE
+"You walk along the road for a hundred or so yards, snow swirling in your
+face. The road bends to the east here, but a narrow spur continues north.") (NE
+TO E6 IF HACK-FLAG ELSE
+"A brisk wind gives you a deep chill, but you reenter the forest. Soon,
+you rejoint the road which now is running from east to west.") (NW TO C6 IF
+HACK-FLAG ELSE "You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (FLAGS FORESTBIT ROADBIT) (ACTION ROAD-ROOM-F)
+> 
+<ROOM D8 (EW 4) (NS 8) (LOC ROOMS) (DESC "On the Roadway") (PATH 0) (WEST TO C8
+IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (EAST TO E8 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp. Putrid sulphurous vapors fill your lungs as you step to
+the edge of the noisome waters. The swamp's edge continues to the
+north and southwest.") (SE TO E8 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp. Putrid sulphurous vapors fill your lungs as you step to
+the edge of the noisome waters. The swamp's edge continues to the
+north and southwest.") (SW TO C9 IF HACK-FLAG ELSE
+"You continue along the road as it heads south toward the mouth of a
+tunnel. The road is joined here by railroad tracks which also lead into the
+tunnel, but bend to the northwest alongside a steep ridge.") (SOUTH TO D9 IF
+HACK-FLAG ELSE "You leave the roadway and come to the edge of a dank area at the edge
+of a swamp, which continues northeast. Putrid sulphurous vapors fill your
+lungs as you step to the edge of the noisome waters.") (NORTH TO D7 IF
+HACK-FLAG ELSE "You continue along the roadway for about a hundred yards.") (NE
+TO E7 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which runs from northeast to south. Putrid sulphurous vapors
+fill your lungs as you step to the edge of the noisome waters.") (NW TO C7 IF
+HACK-FLAG ELSE "You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (FLAGS FORESTBIT ROADBIT) (ACTION ROAD-ROOM-F)
+> 
+<ROOM D9 (EW 4) (NS 9) (LOC ROOMS) (DESC "Edge of Swamp") (PATH 0) (WEST TO C9)
+(EAST PER SWAMP-MOVE) (SE PER SWAMP-MOVE) (SW SORRY
+"You can't move any farther in that direction.") (SOUTH SORRY
+"You can't move any farther in that direction.") (NORTH TO D8 IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway,
+running from the north to the southwest.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (NE PER E8-SWAMP) (NW TO C8
+IF HACK-FLAG ELSE
+"You leave the edge of the swamp and enter the forest; it is quite a
+relief for your nose. You take some deep breaths, continue for a
+hundred yards, and stop.") (FLAGS SWAMPBIT) (ACTION SWAMP-ROOM-F)> 
+<ROOM E3 (EW 5) (NS 3) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+D3 IF HACK-FLAG ELSE
+"The blowing snow blinds you for a moment as you walk through the
+forest.") (EAST TO F3 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SE TO F4 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+northeast to south.") (SW TO D4 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (SOUTH TO E4 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NORTH TO E2 IF HACK-FLAG
+ELSE "You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (NE SORRY
+"You can't move any farther in that direction.") (NW TO D2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (FLAGS FORESTBIT) (ACTION FOREST-ROOM-F)> 
+<ROOM E4 (EW 5) (NS 4) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+D4 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (EAST TO F4 IF HACK-FLAG
+ELSE "You emerge from the thick forest and come to a roadway running from
+northeast to south.") (SE TO F5 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+north to southwest.") (SW TO NORTH-HUT IF HACK-FLAG ELSE
+"You continue through the forest and come to the north side of
+a small wooden hut. Smoke rises in black swirls from the chimney,
+indicating that it's likely that somebody's home.") (SOUTH TO E5 IF HACK-FLAG
+ELSE "You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (NORTH TO E3 IF HACK-FLAG
+ELSE "The blowing snow blinds you for a moment as you walk through the
+forest.") (NE TO F3 IF HACK-FLAG ELSE
+"A branch falls from a nearby tree, startling you briefly. You
+turn back and press on through the forest.") (NW TO D3 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (FLAGS FORESTBIT) (ACTION
+FOREST-ROOM-F)> 
+<ROOM E5 (EW 5) (NS 5) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+BEHIND-HUT IF HACK-FLAG ELSE
+"A cold gust of wind swirls snow into your face, making it difficult
+to see clearly, but you press on through the forest, finally coming to
+the back door of a small wooden hut. Smoke rises from the chimney above.") (
+EAST TO F5 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+north to southwest.") (SE TO F6 IF HACK-FLAG ELSE
+"You cross a road, leave the forest, and come to the edge of a dank area at
+the edge of a swamp running from northeast to southwest. Putrid sulphurous
+vapors fill your lungs as you step to the edge of the noisome waters.") (SW TO
+D6 IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+south to east, with a narrow spur leading north.") (SOUTH TO E6 IF HACK-FLAG
+ELSE "You emerge from the thick forest and come to a roadway running from
+east to west.") (NORTH TO E4 IF HACK-FLAG ELSE
+"A pile of snow falls on your head from a heavily laden branch
+above. You shake it off, and continue through the forest.") (NE TO F4 IF
+HACK-FLAG ELSE "You emerge from the thick forest and come to a roadway running from
+northeast to south.") (NW TO D4 IF HACK-FLAG ELSE
+"You continue through the forest for a hundred yards, and then
+stop. Snowflakes fall softly around you - nearby, a small animal
+scurries through the brush.") (FLAGS FORESTBIT) (ACTION FOREST-ROOM-F)> 
+<ROOM E6 (EW 5) (NS 6) (LOC ROOMS) (DESC "On the Roadway") (PATH 0) (WEST TO D6
+IF HACK-FLAG ELSE
+"You continue along the roadway for about a hundred yards, to a point
+where it curves to the left, heading south. A small spur of the road
+leads north.") (EAST TO F6 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp running from northeast to southwest. Putrid sulphurous vapors
+fill your lungs as you step to the edge of the noisome waters.") (SE TO F6 IF
+HACK-FLAG ELSE "You leave the roadway and come to the edge of a dank area at the edge
+of a swamp running from northeast to southwest. Putrid sulphurous vapors
+fill your lungs as you step to the edge of the noisome waters.") (SW TO D7 IF
+HACK-FLAG ELSE "You leave the road, walk through the forest, and then come upon the same
+road again, now heading north-south.") (SOUTH TO E7 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which runs from northeast to south. Putrid sulphurous vapors
+fill your lungs as you step to the edge of the noisome waters.") (NORTH TO E5
+IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (NE TO F5 IF HACK-FLAG ELSE
+"A brisk wind gives you a deep chill, but you continue along the road
+to the point at which it bends to the north.") (NW TO SOUTH-HUT IF HACK-FLAG
+ELSE "You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you come to the south side of a small hut. The
+smoke from the chimney indicates that perhaps someone is home.") (FLAGS
+FORESTBIT ROADBIT) (ACTION ROAD-ROOM-F)> 
+<ROOM E7 (EW 5) (NS 7) (LOC ROOMS) (DESC "Edge of Swamp") (PATH 0) (WEST TO D7
+IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway,
+which runs from north to south.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (EAST PER SWAMP-MOVE) (SE PER
+SWAMP-MOVE) (SW TO D8 IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway,
+which runs from the north to the southwest.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (SOUTH PER E8-SWAMP) (NORTH
+TO E6 IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby east-west roadway.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (NE PER F6-SWAMP) (NW TO D6
+IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once. The road leads east
+and south, but a narrow spur heads to the north.") (FLAGS SWAMPBIT) (ACTION
+SWAMP-ROOM-F)> 
+<DEFINE-ROUTINE G4-SWAMP> 
+<DEFINE-ROUTINE E7-SWAMP> 
+<DEFINE-ROUTINE E8-SWAMP> 
+<DEFINE-ROUTINE D9-SWAMP> 
+<DEFINE-ROUTINE G5-SWAMP> 
+<DEFINE-ROUTINE F6-SWAMP> 
+<DEFINE-ROUTINE SWAMP-MOVE-TELL> 
+<DEFINE-ROUTINE SWAMP-ROOM-F> 
+<ROOM E8 (EW 5) (NS 8) (LOC ROOMS) (DESC "Edge of Swamp") (PATH 0) (WEST TO D8
+IF HACK-FLAG ELSE
+"You emerge from the thick forest and come to a roadway running from
+north to southwest.") (EAST PER SWAMP-MOVE) (SE PER SWAMP-MOVE) (SW PER
+D9-SWAMP) (SOUTH PER SWAMP-MOVE) (NORTH PER E7-SWAMP) (NE PER SWAMP-MOVE) (NW
+TO D7 IF HACK-FLAG ELSE
+"You emerge from the swamp and come to a roadway running from
+north to south.") (FLAGS SWAMPBIT FORESTBIT) (ACTION SWAMP-ROOM-F)> 
+<ROOM F3 (EW 6) (NS 3) (LOC ROOMS) (DESC "Inside the Forest") (PATH 0) (WEST TO
+E3 IF HACK-FLAG ELSE
+"You stumble through a three-foot snowdrift, but get back on your
+feet quickly and proceed through the forest.") (EAST SORRY
+"You'd be caught in a moment.") (SE TO G4 IF HACK-FLAG ELSE
+"You leave the forest, crossing a roadway, and come to the edge of a dank
+area at the edge of a swamp which continues to the south. Putrid sulphurous
+vapors fill your lungs as you step to the edge of the noisome waters.") (SW TO
+E4 IF HACK-FLAG ELSE
+"You walk through the forest, breaking branches as you go, and
+finally stop after walking about a hundred yards.") (SOUTH TO F4 IF HACK-FLAG
+ELSE "You emerge from the thick forest and come to a roadway running from
+northeast to south.") (NORTH SORRY
+"You scramble up a bit, but slide back down. It's just too steep.") (NE SORRY
+"You can't move any farther in that direction.") (NW TO E2 IF HACK-FLAG ELSE
+"You continue through the forest, until you come to the edge of a wide
+clearing to the north - this is the border zone. From atop three guard
+towers standing in a line from east to west, searchlights play across
+the zone, brightly illuminating everything in their path. On either side
+of the towers are tall fences, running parallel to the border, making a
+direct assault all but impossible.") (FLAGS FORESTBIT) (ACTION FOREST-ROOM-F)> 
+<ROOM F4 (EW 6) (NS 4) (LOC ROOMS) (DESC "On the Roadway") (PATH 0) (WEST TO E4
+IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (EAST TO G4 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which continues to the south. Putrid sulphurous vapors fill your
+lungs as you step to the edge of the noisome waters.") (SE TO G5 IF HACK-FLAG
+ELSE "You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which runs from the north to the southwest. Putrid sulphurous
+vapors fill your lungs as you step to the edge of the noisome waters.") (SW TO
+E5 IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (SOUTH TO F5 IF HACK-FLAG ELSE
+"You continue along the roadway for about a hundred yards to a point
+where it bends to the southwest.") (NORTH TO F3 IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (NE SORRY
+"You start along the road, until you see a roadblock come into sight; you
+duck back into the forest. It would never work to go that way.") (NW TO E3 IF
+HACK-FLAG ELSE "You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (FLAGS FORESTBIT ROADBIT) (ACTION ROAD-ROOM-F)
+> 
+<OBJECT ROADBLOCK (DESC "roadblock") (SYNONYM BLOCK ROADBLOCK) (ADJECTIVE ROAD)
+(LOC GLOBAL-OBJECTS) (SCENARIO 2) (ACTION ROADBLOCK-F)> 
+<DEFINE-ROUTINE ROADBLOCK-F> 
+<ROOM F5 (EW 6) (NS 5) (LOC ROOMS) (DESC "On the Roadway") (PATH 0) (WEST TO E5
+IF HACK-FLAG ELSE
+"You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (EAST TO G5 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which runs from the north to the southwest. Putrid sulphurous
+vapors fill your lungs as you step to the edge of the noisome waters.") (SE
+SORRY "You can't move any farther in that direction.") (SW TO E6 IF HACK-FLAG
+ELSE "You walk along the road for a hundred or so yards, snow swirling in your
+face. From here, the road continues to the west.") (SOUTH TO F6 IF HACK-FLAG
+ELSE "You leave the roadway and come to the edge of a dank area at the edge
+of a swamp running from northeast to southwest. Putrid sulphurous vapors
+fill your lungs as you step to the edge of the noisome waters.") (NORTH TO F4
+IF HACK-FLAG ELSE
+"You walk along the road for a hundred or so yards, snow swirling in your
+face, until you come to a point where the road bends to the northeast.") (NE TO
+G4 IF HACK-FLAG ELSE
+"You leave the roadway and come to the edge of a dank area at the edge
+of a swamp which continues to the south. Putrid sulphurous vapors fill your
+lungs as you step to the edge of the noisome waters.") (NW TO E4 IF HACK-FLAG
+ELSE "You leave the side of the roadway and enter the forest, proceeding a
+hundred yards before you stop.") (FLAGS FORESTBIT ROADBIT) (ACTION ROAD-ROOM-F)
+> 
+<ROOM F6 (EW 6) (NS 6) (LOC ROOMS) (DESC "Edge of Swamp") (PATH 0) (WEST TO E6
+IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby east-west roadway.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (EAST PER SWAMP-MOVE) (SE PER
+SWAMP-MOVE) (SW PER E7-SWAMP) (SOUTH PER SWAMP-MOVE) (NORTH TO F5 IF HACK-FLAG
+ELSE "You leave the side of the swamp and walk onto the nearby roadway,
+which runs from north to southwest here.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (NE PER G5-SWAMP) (NW TO E5
+IF HACK-FLAG ELSE
+"You leave the edge of the swamp and enter the forest; it is quite a
+relief for your nose. You take some deep breaths, continue for a
+hundred yards, and stop.") (FLAGS SWAMPBIT) (ACTION SWAMP-ROOM-F)> 
+<ROOM G4 (EW 7) (NS 4) (LOC ROOMS) (DESC "Edge of Swamp") (PATH 0) (WEST TO F4
+IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway,
+which runs from south to northeast.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (EAST PER SWAMP-MOVE) (SE PER
+SWAMP-MOVE) (SW TO F5 IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway,
+which runs from north to southwest here.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (SOUTH PER G5-SWAMP) (NORTH
+SORRY "You start onto the roadway, and find yourself facing a roadblock. Realizing
+that you'd be caught in a moment continuing that way, you return to the edge
+of the swamp.") (NE PER SWAMP-MOVE) (NW TO F3 IF HACK-FLAG ELSE
+"You leave the edge of the swamp and enter the forest; it is quite a
+relief for your nose. You take some deep breaths, continue for a
+hundred yards, and stop.") (FLAGS SWAMPBIT) (ACTION SWAMP-ROOM-F)> 
+<ROOM G5 (EW 7) (NS 5) (LOC ROOMS) (DESC "Edge of Swamp") (PATH 0) (WEST TO F5
+IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway,
+which runs from north to southwest here.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (EAST PER SWAMP-MOVE) (SE PER
+SWAMP-MOVE) (SW PER F6-SWAMP) (SOUTH PER SWAMP-MOVE) (NORTH PER G4-SWAMP) (NE
+PER SWAMP-MOVE) (NW TO F4 IF HACK-FLAG ELSE
+"You leave the side of the swamp and walk onto the nearby roadway,
+which runs from south to northeast.
+The air is already fresher here, and you cannot help but cough a few
+times, as if to purge the foul air all at once.") (FLAGS SWAMPBIT) (ACTION
+SWAMP-ROOM-F)> 
+<DEFINE-ROUTINE SWAMP-MOVE> 
+<OBJECT TRAIN (LOC GLOBAL-OBJECTS) (DESC "train") (SYNONYM TRAIN CHOO-CHOO) (
+ACTION TRAIN-F)> 
+<DEFINE-ROUTINE TRAIN-F> 
+<OBJECT FOREST (LOC GLOBAL-OBJECTS) (DESC "forest") (SYNONYM FOREST) (SCENARIO
+2) (ACTION FOREST-F)> 
+<DEFINE-ROUTINE FOREST-F> 
+<OBJECT GLOBAL-HUT (LOC GLOBAL-OBJECTS) (DESC "hut") (SYNONYM HUT) (SCENARIO 2)
+(ACTION GLOBAL-HUT-F)> 
+<DEFINE-ROUTINE GLOBAL-HUT-F> 
+<OBJECT T-STATION (LOC GLOBAL-OBJECTS) (DESC "border station") (SYNONYM STATION
+) (ADJECTIVE BORDER) (TRANSIENT <PLTABLE A2 B2 C2 D2 E2>) (ACTION T-STATION-F)>
+
+<GLOBAL TOO-FAR "You're too far away to do that."> 
+<DEFINE-ROUTINE T-STATION-F> 
+<OBJECT GLOBAL-TUNNEL (LOC GLOBAL-OBJECTS) (SYNONYM TUNNEL) (DESC "tunnel") (
+SCENARIO 2) (ACTION GLOBAL-TUNNEL-F)> 
+<DEFINE-ROUTINE GLOBAL-TUNNEL-F> 
+<OBJECT GLOBAL-SNOW (LOC GLOBAL-OBJECTS) (DESC "snow") (SYNONYM SNOW ICE) (
+SCENARIO 2) (ACTION GLOBAL-SNOW-F)> 
+<DEFINE-ROUTINE GLOBAL-SNOW-F> 
+<OBJECT GLOBAL-TREES (LOC GLOBAL-OBJECTS) (DESC "tree") (SYNONYM TREE TREES) (
+SCENARIO 2) (ACTION GLOBAL-TREES-F)> 
+<DEFINE-ROUTINE GLOBAL-TREES-F> 
+<OBJECT GLOBAL-BORDER (LOC GLOBAL-OBJECTS) (DESC "border") (SYNONYM BORDER) (
+SCENARIO 2) (ACTION GLOBAL-BORDER-F)> 
+<DEFINE-ROUTINE GLOBAL-BORDER-F> 

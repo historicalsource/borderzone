@@ -1,0 +1,170 @@
+
+<DEFINE-ROUTINE I-120-SECONDS> 
+<GLOBAL 30-TIMER 0> 
+<DEFINE-ROUTINE I-30-SECONDS> 
+<GLOBAL HEALTH 10> 
+<GLOBAL WARMTH 10> 
+<GLOBAL BEEN-AT-HUT? <>> 
+<GLOBAL CUT-VIGILANCE <>> 
+<DEFINE-ROUTINE GONE-TO-THE-DOGS?> 
+<GLOBAL HEALTH-TBL <PTABLE
+"You are on your last legs now, and have trouble moving around. Even the most simple of actions is complicated, and you realize that your mission will soon end in failure. If you're lucky, maybe they'll find you before you die here."
+"You've gotten to the point where you must stop and rest briefly after every few dozen steps. Unless you stop the blood loss soon, you will collapse."
+"The weakness has taken a toll on your physical abilities; movement is slower and less sure."
+"You are definitely weaker now, and it is starting to affect you significantly."
+"You're starting to feel a little weak and confused; it occurs to you that you won't last very long unless you stop the bleeding from your wounded left arm."
+>> 
+<OBJECT GLOBAL-TOURNIQUET (LOC GLOBAL-OBJECTS) (DESC "tourniquet") (SYNONYM
+TOURNIQUET) (SCENARIO 2) (ACTION GLOBAL-TOURNIQUET-F)> 
+<DEFINE-ROUTINE GLOBAL-TOURNIQUET-F> 
+<OBJECT RIPPED-CLOTHES (DESC "piece of ripped fabric") (SYNONYM FABRIC
+TOURNIQUET PIECE RAG SCRAP) (ADJECTIVE RIPPED TORN) (FLAGS TAKEBIT) (SCENARIO 2
+) (ACTION RIPPED-CLOTHES-F)> 
+<DEFINE-ROUTINE RIPPED-CLOTHES-F> 
+<OBJECT BODY-PARTS (LOC GLOBAL-OBJECTS) (DESC "body part") (SYNONYM LEG FOOT
+HEAD EYE NOSE) (ADJECTIVE MY LEFT RIGHT) (ACTION BODY-PARTS-F)> 
+<DEFINE-ROUTINE BODY-PARTS-F> 
+<OBJECT LEFT-ARM (DESC "your left arm") (SYNONYM ARM) (ADJECTIVE MY LEFT) (
+FLAGS NDESCBIT NARTICLEBIT WORNBIT NOTHEBIT NOABIT OPENBIT SEARCHBIT SURFACEBIT
+) (ACTION ARM-F)> 
+<OBJECT WOUNDED-LEFT-ARM (DESC "your left arm") (SYNONYM ARM WOUND BLOOD) (
+ADJECTIVE MY LEFT BLEEDING BLOODY INJURED HURT WOUNDED) (FLAGS NDESCBIT
+NARTICLEBIT WORNBIT SEARCHBIT SURFACEBIT NOTHEBIT NOABIT OPENBIT) (ACTION ARM-F
+)> 
+<OBJECT RIGHT-ARM (LOC PROTAGONIST) (DESC "your right arm") (SYNONYM ARM) (
+ADJECTIVE MY RIGHT) (FLAGS NDESCBIT NARTICLEBIT WORNBIT SEARCHBIT SURFACEBIT
+NOTHEBIT NOABIT OPENBIT) (ACTION ARM-F)> 
+<DEFINE-ROUTINE ARM-F> 
+<OBJECT CLOTHES (LOC PROTAGONIST) (DESC "your everyday clothes") (SYNONYM
+CLOTHES SOCKS SHIRT PANTS CLOTHING) (ADJECTIVE MY EVERYDAY) (FLAGS NARTICLEBIT
+WEARBIT WORNBIT NOTHEBIT NOABIT) (ACTION CLOTHES-F)> 
+<GLOBAL CLOTHES-RIPPED <>> 
+<DEFINE-ROUTINE CLOTHES-F> 
+<DEFINE-ROUTINE I-200-SECONDS> 
+<GLOBAL WARMTH-TBL <PTABLE
+"You're shaking uncontrollably from the cold. It won't be long before you are competely incapacitated."
+"You're shivering badly. If you don't find some warmth soon, it's hard to see how you can go on."
+"Your teeth start to chatter from the cold; you are clearly slowing down, both physically and mentally."
+"You've got quite a chill; you must move now to keep warm, but even this is not enough."
+"In your confusion, you've all but forgotten how cold it is outside.">> 
+<OBJECT WATCHING-OBJECT (DESC "watching") (LOC GLOBAL-OBJECTS) (SYNONYM
+WATCHING) (ACTION WATCHING-OBJECT-F)> 
+<DEFINE-ROUTINE WATCHING-OBJECT-F> 
+<OBJECT TIMING-OBJECT (DESC "chronograph") (SYNONYM WATCH TIMER TIMING CLOCK
+TIME CHRONOGRAPH STOPWATCH CHRONOMETER) (FLAGS WORNBIT TAKEBIT WEARBIT READBIT)
+(SCENARIO 2) (ACTION TIMING-OBJECT-F)> 
+<DEFINE-ROUTINE TIMING-OBJECT-F> 
+<DEFINE-ROUTINE REDISPLAY-CHRONOGRAPH> 
+<OBJECT SEARCHLIGHTS (DESC "searchlight") (LOC LOCAL-GLOBALS) (SYNONYM
+SEARCHLIGHT LIGHT LIGHTS) (ACTION SEARCHLIGHTS-F)> 
+<DEFINE-ROUTINE SEARCHLIGHTS-F> 
+<DEFINE-ROUTINE SL-CYCLE> 
+<DEFINE-ROUTINE G-CYCLE> 
+<GLOBAL PERIOD-CR ".|
+"> 
+<GLOBAL SL-WATCH <>> 
+<DEFINE-ROUTINE SL-TELL> 
+<DEFINE-ROUTINE SL-POS-STR> 
+<DEFINE-ROUTINE SL-POS-STR-AB> 
+<DEFINE-ROUTINE SL-POS> 
+<GLOBAL SL-POS-STR-TBL <PTABLE "north" "north-northeast" "northeast"
+"east-northeast" "east" "east-southeast" "southeast" "south-southeast" "south"
+"south-southwest" "southwest" "west-southwest" "west" "west-northwest"
+"northwest" "north-northwest" "north">> 
+<GLOBAL SL-POS-STR-AB-TBL <PTABLE "N" "NNE" "NE" "ENE" "E" "ESE" "SE" "SSE" "S"
+"SSW" "SW" "WSW" "W" "WNW" "NW" "NNW" "N">> 
+<GLOBAL SL-TBL <LTABLE <TABLE 0 45> <TABLE 900 90> <TABLE 2700 45>>> 
+<GLOBAL NOMANS-SPEED 3> 
+<DEFINE-ROUTINE NOMANS-MOVE> 
+<DEFINE-ROUTINE PAUSE> 
+<DEFINE-ROUTINE I-READ-FALSE> 
+<DEFINE-ROUTINE SL-CAUGHT-START> 
+<DEFINE-ROUTINE SLOWDOWN> 
+<GLOBAL SL-CAUGHT-TOWERS <PTABLE "leftmost tower " "middle tower "
+"rightmost tower ">> 
+<CONSTANT SL-BEAM 16> 
+<DEFINE-ROUTINE IN-THE-SPOTLIGHT?> 
+<DEFINE-ROUTINE TURN-SL> 
+<GLOBAL TRUE-FLAG T> 
+<GLOBAL FALSE-FLAG <>> 
+<OBJECT DOGS (LOC A2) (DESC "pack of dogs") (SYNONYM DOGS PACK)> 
+<OBJECT GLOBAL-DOGS (LOC GLOBAL-OBJECTS) (DESC "pack of dogs") (SYNONYM DOGS
+PACK) (SCENARIO 2) (ACTION GLOBAL-DOGS-F)> 
+<DEFINE-ROUTINE GLOBAL-DOGS-F> 
+<GLOBAL NODOGS-FLAG <>> 
+<GLOBAL DOG-PURSUIT <>> 
+<GLOBAL VIGILANCE <>> 
+<DEFINE-ROUTINE I-DOGS> 
+<GLOBAL LOST-SCENT <>> 
+<DEFINE-ROUTINE HOW-FAR> 
+<DEFINE-ROUTINE NS-DIFF> 
+<DEFINE-ROUTINE EW-DIFF> 
+<GLOBAL ROAD-TBL <PTABLE F4 F5 E6 D6 ROAD-END D6 D7 D8 C9 0>> 
+<GLOBAL RESTED-ROAD-TBL 0> 
+<GLOBAL CAR-ON-ROAD? <>> 
+<OBJECT CAR (LOC ROOMS) (DESC "automobile") (LDESC
+"An official car is here, bearing the seal of Frobnia.") (SYNONYM DOOR CAR AUTO
+AUTOMOBILE) (FLAGS VOWELBIT AN OPENBIT METALBIT) (ACTION CAR-F)> 
+<DEFINE-ROUTINE CAR-F> 
+<OBJECT CAR-WINDOW (LOC CAR) (DESC "car window") (SYNONYM WINDOW) (FLAGS
+NDESCBIT) (ACTION CAR-WINDOW-F)> 
+<DEFINE-ROUTINE CAR-WINDOW-F> 
+<OBJECT CAR-STUFF (LOC CAR) (DESC "car part") (SYNONYM TRUNK HOOD) (FLAGS
+NDESCBIT) (ACTION CAR-STUFF-F)> 
+<DEFINE-ROUTINE CAR-STUFF-F> 
+<OBJECT GLOBAL-CAR (LOC GLOBAL-OBJECTS) (DESC "automobile") (SCENARIO 2) (
+SYNONYM CAR AUTO AUTOMOBILE) (FLAGS VOWELBIT AN) (ACTION GLOBAL-CAR-F)> 
+<DEFINE-ROUTINE GLOBAL-CAR-F> 
+<DEFINE-ROUTINE I-CARS> 
+<DEFINE-ROUTINE TELL-DIRECTION> 
+<DEFINE-ROUTINE RET-DIRECTION> 
+<GLOBAL DIR-PROP-TBL <PTABLE P?NORTH P?NW P?NE P?EAST P?SOUTH P?SW P?SE P?WEST>
+> 
+<GLOBAL CAR-SEQUENCE <>> 
+<GLOBAL WOOD-TIMER 35> 
+<DEFINE-ROUTINE CAR-NEARLY-HITS> 
+<GLOBAL SEQUENCE-RUN? <>> 
+<GLOBAL CAR-SEQUENCE-TBL <LTABLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>> 
+<DEFINE-ROUTINE RUN-CAR-SEQUENCE> 
+<DEFINE-ROUTINE RUN-SCOUT-SEQUENCE> 
+<DEFINE-ROUTINE SCOUT-CATCHES> 
+<GLOBAL SCOUT-TBL <PTABLE <PTABLE NORTH-HUT SOUTH-HUT
+"As if on command, a single guard breaks off from the group and walks slowly and carefully to the northeast."
+"As if on command, a single guard breaks off from the group and walks slowly and carefully to the northeast."
+OUTSIDE-HUT> <PTABLE BEHIND-HUT HUT-LIVING
+"You hear footsteps coming slowly in your direction from the north side of the hut."
+"Apparently, one of the guards has been ordered to search the area, for a lone guard is walking past the window. Fortunately, he is concentrating on the grounds, rather than the inside of the hut."
+NORTH-HUT> <PTABLE SOUTH-HUT HUT-STORAGE
+"You hear footsteps coming slowly in your direction from the back side of the hut."
+"Through the window, you see a lone guard checking out
+the rear of the hut. Fortunately, he isn't looking inside." BEHIND-HUT> <PTABLE
+ROAD-END HUT-BEDROOM
+"You can see a single guard slowly walking around the back side of the hut to the south side of the hut."
+"Through the window, a lone guard comes into view, awalking slowly toward the front of the hut. Fortunately, he isn't looking in your direction."
+SOUTH-HUT> <PTABLE NORTH-HUT 0
+"You watch as the lone guard returns to the group. He appears relieved that he has nothing to report."
+"FOO" 0>>> 
+<DEFINE-ROUTINE GUARDS-SPOTTED> 
+<DEFINE-ROUTINE CAR-SPOTTED> 
+<OBJECT SWAMP (LOC GLOBAL-OBJECTS) (DESC "swamp") (SYNONYM SWAMP MARSH) (ACTION
+SWAMP-F)> 
+<DEFINE-ROUTINE WRONG-SCENARIO> 
+<GLOBAL IN-SWAMP? <>> 
+<DEFINE-ROUTINE SWAMP-F> 
+<GLOBAL HACK-FLAG <>> 
+<DEFINE-ROUTINE GUARD-DISTANCE> 
+<DEFINE-ROUTINE IN-GUARD-VIEW?> 
+<GLOBAL WOOD-TBL <PLTABLE HUT-STORAGE HUT-LIVING OUTSIDE-HUT D5 D5 OUTSIDE-SHED
+INSIDE-SHED INSIDE-SHED OUTSIDE-SHED D5 D5 OUTSIDE-HUT HUT-LIVING HUT-STORAGE
+HUT-LIVING 0>> 
+<GLOBAL WOOD-COUNT 0> 
+<DEFINE-ROUTINE RUN-WOOD-SEQUENCE> 
+<GLOBAL HUT-MAN-FROM <>> 
+<CONSTANT HUT-MAN-HALT
+"You hear a cry of \"Halt,\" then spin around to see a large man aiming
+a pistol at you. You start to run, but you're shot in the leg.  Unable to
+move, you await the arrival of the border patrol."> 
+<DEFINE-ROUTINE HUT-MUNGER> 
+<OBJECT GLOBAL-SEARCHLIGHTS (LOC GLOBAL-OBJECTS) (DESC "searchlights") (SYNONYM
+LIGHT LIGHTS SEARCHLIGHT) (SCENARIO 2) (ACTION GLOBAL-SEARCHLIGHTS-F)> 
+<DEFINE-ROUTINE GLOBAL-SEARCHLIGHTS-F> 
