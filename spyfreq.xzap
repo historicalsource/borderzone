@@ -1,0 +1,200 @@
+	.FSTR FSTR?1,"the "	;1804	903
+	.FSTR FSTR?2,"You "	;693	232
+	.FSTR FSTR?3,", "	;603	604
+	.FSTR FSTR?4,"and "	;492	247
+	.FSTR FSTR?5,"you "	;466	234
+	.FSTR FSTR?6,"The "	;408	137
+	.FSTR FSTR?7,"to "	;347	348
+	.FSTR FSTR?8,"your "	;294	99
+	.FSTR FSTR?9,"through "	;276	47
+	.FSTR FSTR?10,"from "	;261	88
+	.FSTR FSTR?11,"You're "	;252	37
+	.FSTR FSTR?12,"of "	;251	252
+	.FSTR FSTR?13,". "	;242	243
+	.FSTR FSTR?14,"are "	;204	103
+	.FSTR FSTR?15,"into "	;204	69
+	.FSTR FSTR?16,"can't "	;200	41
+	.FSTR FSTR?17,"that "	;171	58
+	.FSTR FSTR?18,"which "	;156	40
+	.FSTR FSTR?19,"continue "	;154	23
+	.FSTR FSTR?20,"is "	;153	154
+	.FSTR FSTR?21,"forest"	;152	39
+	.FSTR FSTR?22,"border "	;150	31
+	.FSTR FSTR?23,"hundred "	;150	26
+	.FSTR FSTR?24,"but "	;140	71
+	.FSTR FSTR?25,"It's "	;135	28
+	.FSTR FSTR?26,"already "	;132	23
+	.FSTR FSTR?27,"small "	;128	33
+	.FSTR FSTR?28,"tower "	;124	32
+	.FSTR FSTR?29,"forest "	;120	25
+	.FSTR FSTR?30,"roadway "	;120	21
+	.FSTR FSTR?31,"north "	;116	30
+	.FSTR FSTR?32,"running "	;114	20
+	.FSTR FSTR?33,"southeast"	;112	17
+	.FSTR FSTR?34,"northeast"	;112	17
+	.FSTR FSTR?35,"guards "	;110	23
+	.FSTR FSTR?36,"around "	;105	22
+	.FSTR FSTR?37,"Forest"	;105	22
+	.FSTR FSTR?38,"There's "	;104	14
+	.FSTR FSTR?39,"standing "	;98	15
+	.FSTR FSTR?40,"in "	;96	97
+	.FSTR FSTR?41,"about "	;96	25
+	.FSTR FSTR?42,"can "	;94	48
+	.FSTR FSTR?43,"south"	;93	32
+	.FSTR FSTR?44,"have "	;93	32
+	.FSTR FSTR?45,"for "	;90	46
+	.FSTR FSTR?46,"walk "	;90	31
+	.FSTR FSTR?47,"side "	;90	31
+	.FSTR FSTR?48,"don't "	;90	19
+	.FSTR FSTR?49,"south "	;88	23
+	.FSTR FSTR?50,"guard "	;88	23
+	.FSTR FSTR?51,"before "	;85	18
+	.FSTR FSTR?52,"would "	;84	22
+	.FSTR FSTR?53,"just "	;81	28
+	.FSTR FSTR?54,"come "	;81	28
+	.FSTR FSTR?55,"along "	;80	21
+	.FSTR FSTR?56,"you're "	;78	14
+	.FSTR FSTR?57,"nothing "	;78	14
+	.FSTR FSTR?58,"leave "	;76	20
+	.FSTR FSTR?59,"toward "	;75	16
+	.FSTR FSTR?60,"snow "	;72	25
+	.FSTR FSTR?61,"road "	;72	25
+	.FSTR FSTR?62,"feet "	;72	25
+	.FSTR FSTR?63,"moment "	;70	15
+	.FSTR FSTR?64,"across "	;70	15
+	.FSTR FSTR?65,"southwest"	;70	11
+	.FSTR FSTR?66,"doesn't "	;70	11
+	.FSTR FSTR?67,"back "	;69	24
+	.FSTR FSTR?68,"not "	;68	35
+	.FSTR FSTR?69,"it's "	;68	18
+	.FSTR FSTR?70,"see "	;66	34
+	.FSTR FSTR?71,"quickly "	;66	12
+	.FSTR FSTR?72,"captured"	;66	12
+	.FSTR FSTR?73,"here"	;64	33
+	.FSTR FSTR?74,"front "	;64	17
+	.FSTR FSTR?75,"with "	;63	22
+	.FSTR FSTR?76,"fence"	;63	22
+	.FSTR FSTR?77,"door "	;63	22
+	.FSTR FSTR?78,"clearing "	;63	10
+	.FSTR FSTR?79,"You've "	;63	10
+	.FSTR FSTR?80,"You'll "	;63	10
+	.FSTR FSTR?81,"automobile "	;63	8
+	.FSTR FSTR?82,"at "	;61	62
+	.FSTR FSTR?83,"on "	;60	61
+	.FSTR FSTR?84,"north"	;60	21
+	.FSTR FSTR?85,"other "	;60	16
+	.FSTR FSTR?86,"guards"	;60	16
+	.FSTR FSTR?87,"making "	;60	13
+	.FSTR FSTR?88,"this "	;57	20
+	.FSTR FSTR?89,"yards "	;56	15
+	.FSTR FSTR?90,"enter "	;56	15
+	.FSTR FSTR?91,"it "	;55	56
+	.FSTR FSTR?92,"tracks "	;55	12
+	.FSTR FSTR?93,"searchlights "	;55	6
+	.FSTR FSTR?94,"It "	;54	28
+	.FSTR FSTR?95,"How "	;54	19
+	.FSTR FSTR?96,"clearing"	;54	10
+
+
+;word frequency table of 96 most common words
+
+WORDS::	.TABLE
+	FSTR?1
+	FSTR?2
+	FSTR?3
+	FSTR?4
+	FSTR?5
+	FSTR?6
+	FSTR?7
+	FSTR?8
+	FSTR?9
+	FSTR?10
+	FSTR?11
+	FSTR?12
+	FSTR?13
+	FSTR?14
+	FSTR?15
+	FSTR?16
+	FSTR?17
+	FSTR?18
+	FSTR?19
+	FSTR?20
+	FSTR?21
+	FSTR?22
+	FSTR?23
+	FSTR?24
+	FSTR?25
+	FSTR?26
+	FSTR?27
+	FSTR?28
+	FSTR?29
+	FSTR?30
+	FSTR?31
+	FSTR?32
+	FSTR?33
+	FSTR?34
+	FSTR?35
+	FSTR?36
+	FSTR?37
+	FSTR?38
+	FSTR?39
+	FSTR?40
+	FSTR?41
+	FSTR?42
+	FSTR?43
+	FSTR?44
+	FSTR?45
+	FSTR?46
+	FSTR?47
+	FSTR?48
+	FSTR?49
+	FSTR?50
+	FSTR?51
+	FSTR?52
+	FSTR?53
+	FSTR?54
+	FSTR?55
+	FSTR?56
+	FSTR?57
+	FSTR?58
+	FSTR?59
+	FSTR?60
+	FSTR?61
+	FSTR?62
+	FSTR?63
+	FSTR?64
+	FSTR?65
+	FSTR?66
+	FSTR?67
+	FSTR?68
+	FSTR?69
+	FSTR?70
+	FSTR?71
+	FSTR?72
+	FSTR?73
+	FSTR?74
+	FSTR?75
+	FSTR?76
+	FSTR?77
+	FSTR?78
+	FSTR?79
+	FSTR?80
+	FSTR?81
+	FSTR?82
+	FSTR?83
+	FSTR?84
+	FSTR?85
+	FSTR?86
+	FSTR?87
+	FSTR?88
+	FSTR?89
+	FSTR?90
+	FSTR?91
+	FSTR?92
+	FSTR?93
+	FSTR?94
+	FSTR?95
+	FSTR?96
+	.ENDT
+
+	.ENDI
